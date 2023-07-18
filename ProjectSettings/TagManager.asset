@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Wall
   - Monster
+  - Left
+  - Up
+  - Right
+  - Down
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - PlayerDashing
   - 
   - 
   - 
