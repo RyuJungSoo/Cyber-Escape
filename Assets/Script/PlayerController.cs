@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
                     if (collider.tag == "Monster")
                     {
                         Debug.Log("¼º°ø!");
-                        // collider.GetComponent<MonsterComponent>().TakeDamage(1.0f);
+                        collider.gameObject.GetComponent<HitObject>().ChangeColor();
                     }
                 }
 
