@@ -4277,7 +4277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898720642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: -0.24, z: 0}
+  m_LocalPosition: {x: 1.09, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9744,7 +9744,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2020521, y: 1.999399}
+  m_Size: {x: 1.2, y: 2}
   m_EdgeRadius: 0
 --- !u!212 &2103045971
 SpriteRenderer:
@@ -9826,12 +9826,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382c36a40a5c788419635638656d925b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTime: 0.1
+  speed: 5
+  direction: {x: 0, y: 0, z: 0}
+  defaultTime: 0.2
   isGround: 1
   isPuzzleSolving: 0
   coolTime: 0.5
   pos: {fileID: 1898720643}
-  boxSize: {x: 0.92, y: 1.4}
+  boxSize: {x: 1.07, y: 1.73}
 --- !u!95 &2103045975
 Animator:
   serializedVersion: 5
