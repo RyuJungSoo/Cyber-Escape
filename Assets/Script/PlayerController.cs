@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D PlayerRigid;
     Animator animator;
     BoxCollider2D col2D;
+    AudioSource audioSource;
 
+    public AudioClip[] audioClips;
     public float speed = 5.0f;
     public Vector3 direction;
 
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour
         this.PlayerRigid = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
         this.col2D = GetComponent<BoxCollider2D>();
-
+        this.audioSource = GetComponent<AudioSource>();
         direction = Vector2.zero;
     }
 
@@ -47,14 +49,31 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) // 공격
         {
             animator.SetTrigger("atk");
+            PlayEffect(3);
         }                                                                         
 
         float key = 0.0f; // 좌우 이동 방향
-        if (Input.GetKey(KeyCode.RightArrow)) key = 1.0f;
-        if (Input.GetKey(KeyCode.LeftArrow)) key = -1.0f;
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            key = 1.0f;
+            
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        { 
+            key = -1.0f;
+            
+        }
 
         direction.x = Input.GetAxisRaw("Horizontal"); // 왼쪽부터 -1 0 1
-        
+        if (direction.x != 0)
+        {
+            audioSource.loop = true;
+            PlayEffect(0);
+
+        }
+        else
+            audioSource.loop = false;
+            
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(col2D.bounds.center, col2D.bounds.size, 0f, Vector2.down, 0.02f, LayerMask.GetMask("Ground"));
         if (raycastHit.collider != null)
@@ -66,11 +85,13 @@ public class PlayerController : MonoBehaviour
         {
             this.PlayerRigid.AddForce(transform.up * this.jumpForce);
             temp = direction.x;
+            PlayEffect(2);
         }
 
         if (isGround)
         {
             transform.position += direction * speed * Time.deltaTime; // 이동
+            
         }
         else
         {
@@ -99,6 +120,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && (key != 0.0f) && isGround)
         {
             isdash = true;
+            PlayEffect(1);
         }
 
         if (!isdash)
@@ -133,6 +155,20 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("성공!");
                 collider.gameObject.GetComponent<HitObject>().ChangeColor();
+            }
+        }
+    }
+
+    public void PlayEffect(int index)
+    {
+        if (index != 0)
+            audioSource.PlayOneShot(audioClips[index]);
+        else
+        {
+            if (!audioSource.isPlaying)
+            {
+
+                audioSource.Play();
             }
         }
     }
