@@ -21,24 +21,31 @@ public class DoorButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //ESC 눌렀을때 퍼즐 UI키기
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             PuzzleUI.SetActive(false);
+            GameObject.Find("Player").GetComponent<PlayerController>().isPuzzleSolving = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //일정거리 들어왔을때 퍼즐 UI 켜기
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !PuzzleUI.GetComponent<PuzzleCompononent>().isSolved && !PuzzleUI.GetComponent<PuzzleCompononent>().isFailed)
         {
-            PuzzleUI.SetActive(true);
+            collision.gameObject.GetComponent<PlayerController>().isPuzzleSolving = true;
             Timer.SetActive(true);
+            PuzzleUI.SetActive(true);
+
             // 이미 타이머 세팅했는지 중복 세팅 방지
             if (!isAlreadyTimerSetting)
             {
                 //타이머 설정 
                 Timer.GetComponent<TimerController>().SetTimer(gameObject, limitTime);
                 isAlreadyTimerSetting = true;
+
             }
         }
     }

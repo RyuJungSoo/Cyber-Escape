@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
 
     public bool isGround = true;
+    public bool isPuzzleSolving = false;
 
     BoxCollider2D col2D;
 
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPuzzleSolving) return;
+
         if (curTime <= 0) // 공격
         {
             if (Input.GetKey(KeyCode.Z))
@@ -95,7 +99,8 @@ public class PlayerController : MonoBehaviour
 
         if (key != 0.0f) // 걷기 애니메이션 설정
         {
-            animator.SetBool("isWalk", true);
+            if(dashTime != defaultTime)
+                animator.SetBool("isWalk", true);
         }
         else
         {
@@ -127,11 +132,13 @@ public class PlayerController : MonoBehaviour
             this.gameObject.layer = 7;
             transform.Translate(key * 0.125f, 0, 0);
         }
-    }    
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
     }
+
+   
 }

@@ -723,7 +723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102634080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.74, y: 3.08, z: 0}
+  m_LocalPosition: {x: 3.74, y: 3.08, z: -1}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2715,6 +2715,7 @@ MonoBehaviour:
   time: 60
   originTime: 0
   doorButton: {fileID: 0}
+  player: {fileID: 2103045969}
   min: 0
   sec: 0
   isTimeOver: 0
@@ -9786,7 +9787,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e5bd00bef24b434497927f00816034f, type: 3}
+  m_Sprite: {fileID: 2122763196, guid: c8baf6da29109394fb9fb89edf3b978a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9827,6 +9828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultTime: 0.1
   isGround: 1
+  isPuzzleSolving: 0
   coolTime: 0.5
   pos: {fileID: 1898720643}
   boxSize: {x: 0.92, y: 1.4}

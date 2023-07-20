@@ -12,6 +12,7 @@ public class TimerController : MonoBehaviour
     public float time = 60;
     public float originTime = 0;
     public GameObject doorButton;
+    public GameObject player;
 
     public int min, sec;
 
@@ -43,6 +44,10 @@ public class TimerController : MonoBehaviour
         {
             //타이머 정지
             timerStop = true;
+            player.GetComponent<PlayerController>().isPuzzleSolving = false;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isSolved = true;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isFailed = false;
+
             gameObject.SetActive(false); 
         }
 
@@ -53,10 +58,15 @@ public class TimerController : MonoBehaviour
             sec = 0;
             //문 열리는 애니메이션 재생
             doorButton.GetComponent<DoorButtonController>().Door.GetComponent<Animator>().SetBool("isDoorOpen", true);
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isSolved = false;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isFailed = true;
+
+
             //퍼즐 UI 숨기기
             doorButton.GetComponent<DoorButtonController>().PuzzleUI.SetActive(false);
             isTimeOver = true;
             timerStop = true;
+            player.GetComponent<PlayerController>().isPuzzleSolving = false;
             gameObject.SetActive(false);
         }
         
