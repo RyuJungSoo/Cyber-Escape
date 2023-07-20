@@ -9,14 +9,14 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D PlayerRigid;
     Animator animator;
+    BoxCollider2D col2D;
 
-    private float jumpForce = 500.0f;
+    public float speed = 5.0f;
+    public Vector3 direction;
 
-    private float defaultForce;
-    private float defaultmaxSpeed;
+    private float temp = 0.0f;
 
-    private float walkForce = 30.0f;
-    private float maxWalkSpeed = 3.0f;
+    private float jumpForce = 425.0f;
 
     private bool isdash;
     public float defaultTime;
@@ -25,16 +25,13 @@ public class PlayerController : MonoBehaviour
     public bool isGround = true;
     public bool isPuzzleSolving = false;
 
-    BoxCollider2D col2D;
-
     void Start()
     {
         this.PlayerRigid = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
         this.col2D = GetComponent<BoxCollider2D>();
 
-        defaultForce = walkForce;
-        defaultmaxSpeed = maxWalkSpeed;
+        direction = Vector2.zero;
     }
 
     private float curTime;
@@ -47,50 +44,40 @@ public class PlayerController : MonoBehaviour
     {
         if (isPuzzleSolving) return;
 
-        if (curTime <= 0) // 공격
+        if (Input.GetKeyDown(KeyCode.Z)) // 공격
         {
-            if (Input.GetKey(KeyCode.Z))
-            {
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
-                foreach(Collider2D collider in collider2Ds)
-                {
-                    if (collider.tag == "Monster")
-                    {
-                        Debug.Log("성공!");
-                        collider.gameObject.GetComponent<HitObject>().ChangeColor();
-                    }
-                }
+            animator.SetTrigger("atk");
+        }                                                                         
 
-                animator.SetTrigger("atk");
-                curTime = coolTime;
-            }
-        }
-        else
-        {
-            curTime -= Time.deltaTime;
-        }
+        float key = 0.0f; // 좌우 이동 방향
+        if (Input.GetKey(KeyCode.RightArrow)) key = 1.0f;
+        if (Input.GetKey(KeyCode.LeftArrow)) key = -1.0f;
+
+        direction.x = Input.GetAxisRaw("Horizontal"); // 왼쪽부터 -1 0 1
+        
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(col2D.bounds.center, col2D.bounds.size, 0f, Vector2.down, 0.02f, LayerMask.GetMask("Ground"));
         if (raycastHit.collider != null)
             isGround = true;
         else 
             isGround = false;
-
+        
         if (Input.GetKeyDown(KeyCode.Space) && isGround) // 점프
         {
             this.PlayerRigid.AddForce(transform.up * this.jumpForce);
+            temp = direction.x;
         }
 
-        float key = 0.0f; // 좌우 이동
-        if (Input.GetKey(KeyCode.RightArrow)) key = 1.0f;
-        if (Input.GetKey(KeyCode.LeftArrow)) key = -1.0f;
-
-        float speedx = Mathf.Abs(this.PlayerRigid.velocity.x); // 플레이어 속도
-
-        if (speedx < defaultmaxSpeed) // 스피드 제한
+        if (isGround)
         {
-            this.PlayerRigid.AddForce(transform.right * key * this.defaultForce);
+            transform.position += direction * speed * Time.deltaTime; // 이동
         }
+        else
+        {
+            direction.x = temp;
+            transform.position += direction * speed * Time.deltaTime;
+        }
+
 
         if ((key != 0.0f) && isGround) // 움직이는 방향에 맞춰 반전
         {
@@ -107,8 +94,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalk", false);
         }
 
-        // 대쉬
-        if (Input.GetKeyDown(KeyCode.F) && isGround)
+
+        // 대쉬 (이동 중에 F키)
+        if (Input.GetKeyDown(KeyCode.F) && (key != 0.0f) && isGround)
         {
             isdash = true;
         }
@@ -116,6 +104,7 @@ public class PlayerController : MonoBehaviour
         if (!isdash)
         {
             this.gameObject.layer = 0;
+            animator.SetBool("isDash", false);
         }
 
         if (dashTime <= 0)
@@ -130,7 +119,21 @@ public class PlayerController : MonoBehaviour
         {
             dashTime -= Time.deltaTime;
             this.gameObject.layer = 7;
-            transform.Translate(key * 0.125f, 0, 0);
+            animator.SetBool("isDash", true);
+            transform.Translate(key * 0.1f, 0, 0);
+        }
+    }
+
+    public void Attack()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if (collider.tag == "Monster")
+            {
+                Debug.Log("성공!");
+                collider.gameObject.GetComponent<HitObject>().ChangeColor();
+            }
         }
     }
 
@@ -139,6 +142,4 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
     }
-
-   
 }
