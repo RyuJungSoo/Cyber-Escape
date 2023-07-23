@@ -24,8 +24,15 @@ public class PlayerController : MonoBehaviour
     public float defaultTime;
     private float dashTime;
 
+    public float dashCooldown = 2.0f;
+    private float dashTimer = 0.0f;
+
+    public Transform pos;
+    public Vector2 boxSize;
+
     public bool isGround = true;
     public bool isPuzzleSolving = false;
+
 
     void Start()
     {
@@ -34,23 +41,20 @@ public class PlayerController : MonoBehaviour
         this.col2D = GetComponent<BoxCollider2D>();
         this.audioSource = GetComponent<AudioSource>();
         direction = Vector2.zero;
-    }
-
-    private float curTime;
-    public float coolTime = 0.5f;
-    public Transform pos;
-    public Vector2 boxSize;
+    }    
 
     // Update is called once per frame
     void Update()
     {
         if (isPuzzleSolving) return;
 
+
         if (Input.GetKeyDown(KeyCode.Z)) // 공격
         {
             animator.SetTrigger("atk");
             PlayEffect(3);
         }                                                                         
+
 
         float key = 0.0f; // 좌우 이동 방향
         if (Input.GetKey(KeyCode.RightArrow))
@@ -80,7 +84,7 @@ public class PlayerController : MonoBehaviour
             isGround = true;
         else 
             isGround = false;
-        
+
         if (Input.GetKeyDown(KeyCode.Space) && isGround) // 점프
         {
             this.PlayerRigid.AddForce(transform.up * this.jumpForce);
@@ -88,17 +92,17 @@ public class PlayerController : MonoBehaviour
             PlayEffect(2);
         }
 
+        
         if (isGround)
         {
             transform.position += direction * speed * Time.deltaTime; // 이동
-            
         }
         else
         {
             direction.x = temp;
             transform.position += direction * speed * Time.deltaTime;
         }
-
+        
 
         if ((key != 0.0f) && isGround) // 움직이는 방향에 맞춰 반전
         {
@@ -116,13 +120,19 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        // 대쉬 (이동 중에 F키)
-        if (Input.GetKeyDown(KeyCode.F) && (key != 0.0f) && isGround)
+        // 대쉬 (이동 중에 F키) (쿨타임 2초)                                      
+        if (Input.GetKeyDown(KeyCode.F) && (key != 0.0f) && isGround && dashTimer <= 0.0f)
         {
             isdash = true;
+            dashTimer = dashCooldown;
             PlayEffect(1);
         }
 
+        if (dashTimer > 0.0f)
+        {
+            dashTimer -= Time.deltaTime;
+        }
+            
         if (!isdash)
         {
             this.gameObject.layer = 0;
