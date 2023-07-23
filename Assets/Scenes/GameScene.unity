@@ -19232,11 +19232,11 @@ MonoBehaviour:
   speed: 5
   direction: {x: 0, y: 0, z: 0}
   defaultTime: 0.2
-  isGround: 1
-  isPuzzleSolving: 0
-  coolTime: 0.5
+  dashCooldown: 2
   pos: {fileID: 1898720643}
   boxSize: {x: 1.07, y: 1.73}
+  isGround: 1
+  isPuzzleSolving: 0
 --- !u!95 &2103045975
 Animator:
   serializedVersion: 5
