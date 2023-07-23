@@ -10,6 +10,9 @@ TagManager:
   - Up
   - Right
   - Down
+  - task-wire
+  - TaskWireR
+  - TaskWireL
   layers:
   - Default
   - TransparentFX
