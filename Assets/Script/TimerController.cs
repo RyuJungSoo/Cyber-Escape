@@ -60,6 +60,8 @@ public class TimerController : MonoBehaviour
             doorButton.GetComponent<DoorButtonController>().Door.GetComponent<Animator>().SetBool("isDoorOpen", true);
             doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isSolved = false;
             doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isFailed = true;
+            //몬스터 스폰 시작
+            doorButton.GetComponent<DoorButtonController>().Door.GetComponent<MonsterSpawnComponent>().isStartSpawn = true;
 
 
             //퍼즐 UI 숨기기

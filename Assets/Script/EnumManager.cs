@@ -19,7 +19,7 @@ public class EnumManager : MonoBehaviour
 
 namespace EnumSpace
 {
-    enum MonsterType
+    public enum MonsterType
     { 
         ROADROBOT,
         ATTACKROBOT,

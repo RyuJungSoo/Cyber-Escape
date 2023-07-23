@@ -12,14 +12,13 @@ public class MonsterComponent : MonoBehaviour
     public float moveRange = 2; // 좌우 이동 거리
     public bool isWalk = true;
     public Vector2 direction = new Vector2(-1, 0);
+    public Vector3 originPos;
 
-    [SerializeField]
-    MonsterType type;
+    public MonsterType type;
 
 
     private Rigidbody2D EnemyRigid;
     private Animator animator;
-    private Vector3 originPos;
     private float angle = 0;
     private float attackTimer = 0f;
 
