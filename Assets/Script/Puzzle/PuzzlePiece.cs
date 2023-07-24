@@ -47,7 +47,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 transform.localPosition = Vector3.zero;
                 transform.rotation = piecePos.transform.rotation;
                 isSet = true;
-                Puzzle.GetComponent<TangramComponent>().SetCheck();
+
+ 
+                
+                Puzzle.GetComponent<PieceCheckComponent>().SetCheck();
+
             }
         }
     }
@@ -55,7 +59,6 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     void Start()
     {
         Puzzle = transform.parent.gameObject.transform.parent.gameObject;
-    
     }
 
     // Update is called once per frame
@@ -72,9 +75,23 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 else if(transform.eulerAngles.z < 0.1)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
-
                 //Debug.Log(Mathf.Abs(transform.rotation.eulerAngles.z));
+
+
             }
+
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+
+                transform.Rotate(new Vector3(0f, 0f, 45f));
+                if (transform.eulerAngles.z >= 360)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                else if (transform.eulerAngles.z < 0.1)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+               // Debug.Log(Mathf.Abs(transform.rotation.eulerAngles.z));
+
+            }
+            
         }
 
     }
