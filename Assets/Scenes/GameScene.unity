@@ -809,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a2defca37be248864dbbcf212b243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFadeOut: 0
 --- !u!114 &52116504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1958,7 +1959,7 @@ RectTransform:
   m_GameObject: {fileID: 190558271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.13739981, y: 0.2509333, z: 2.531053}
+  m_LocalScale: {x: 0.1373998, y: 0.25093323, z: 2.5310535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1885939947}
@@ -7110,7 +7111,6 @@ GameObject:
   - component: {fileID: 1116648507}
   - component: {fileID: 1116648509}
   - component: {fileID: 1116648508}
-  - component: {fileID: 1116648510}
   m_Layer: 5
   m_Name: Wire_Puzzle
   m_TagString: Untagged
@@ -7177,20 +7177,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116648506}
   m_CullTransparentMesh: 0
---- !u!114 &1116648510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116648506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2e17eb4e04790409806af18f8034d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFailed: 0
-  isSolved: 0
 --- !u!1 &1129037051
 GameObject:
   m_ObjectHideFlags: 0
@@ -7382,7 +7368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9388b350ad5e24b4b83c3d235ce92c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PuzzleUI: {fileID: 734036269}
+  PuzzleUI: {fileID: 1598791958}
   Timer: {fileID: 841573193}
   Door: {fileID: 678854160}
   limitTime: 10
@@ -11312,6 +11298,8 @@ GameObject:
   - component: {fileID: 1904579242}
   - component: {fileID: 1904579241}
   - component: {fileID: 1904579240}
+  - component: {fileID: 1904579244}
+  - component: {fileID: 1904579243}
   m_Layer: 5
   m_Name: Fix Wiring Task
   m_TagString: Untagged
@@ -11409,6 +11397,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904579238}
   m_CullTransparentMesh: 0
+--- !u!114 &1904579243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904579238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2e17eb4e04790409806af18f8034d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFailed: 0
+  isSolved: 0
+--- !u!114 &1904579244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904579238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4b30aeb319ec54489a07819600e800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieces: []
 --- !u!1 &1923598712
 GameObject:
   m_ObjectHideFlags: 0
@@ -21017,6 +21032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a2defca37be248864dbbcf212b243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFadeOut: 0
 --- !u!82 &2103045978
 AudioSource:
   m_ObjectHideFlags: 0

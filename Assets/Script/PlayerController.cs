@@ -165,6 +165,8 @@ public class PlayerController : MonoBehaviour
         {
             if (collider.CompareTag("Monster")  || collider.CompareTag("Dummy"))
             {
+                if (collider.gameObject.GetComponent<HitObject>().isFadeOut) return;
+
                 Debug.Log("¼º°ø!");
                 collider.gameObject.GetComponent<HitObject>().ChangeColor();
                 collider.gameObject.GetComponent<MonsterComponent>().TakeDamage(damage);

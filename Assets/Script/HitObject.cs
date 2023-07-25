@@ -9,7 +9,7 @@ public class HitObject : MonoBehaviour
     SpriteRenderer renderer;
     Color originColor;
     bool isChange = false;
-    bool isFadeOut = false;
+    public bool isFadeOut = false;
     float changeTimer = 0;
     void Start()
     {

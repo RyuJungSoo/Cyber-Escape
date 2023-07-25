@@ -33,7 +33,7 @@ public class DoorButtonController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //일정거리 들어왔을때 퍼즐 UI 켜기
-        if (collision.CompareTag("Player") && !PuzzleUI.GetComponent<PuzzleCompononent>().isSolved && !PuzzleUI.GetComponent<PuzzleCompononent>().isFailed)
+        if (collision.CompareTag("Player") && !PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved && !PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed)
         {
             collision.gameObject.GetComponent<AudioSource>().Stop();
             collision.gameObject.GetComponent<PlayerController>().isPuzzleSolving = true;

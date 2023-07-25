@@ -40,13 +40,13 @@ public class TimerController : MonoBehaviour
 
 
         //만약 문제를 풀었으면
-        if (doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isSolved)
+        if (doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved)
         {
             //타이머 정지
             timerStop = true;
             player.GetComponent<PlayerController>().isPuzzleSolving = false;
-            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isSolved = true;
-            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isFailed = false;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = true;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = false;
 
             gameObject.SetActive(false); 
         }
@@ -58,8 +58,8 @@ public class TimerController : MonoBehaviour
             sec = 0;
             //문 열리는 애니메이션 재생
             doorButton.GetComponent<DoorButtonController>().Door.GetComponent<Animator>().SetBool("isDoorOpen", true);
-            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isSolved = false;
-            doorButton.GetComponent<DoorButtonController>().PuzzleUI.GetComponent<PuzzleCompononent>().isFailed = true;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = true;
             //몬스터 스폰 시작
             doorButton.GetComponent<DoorButtonController>().Door.GetComponent<MonsterSpawnComponent>().isStartSpawn = true;
 
