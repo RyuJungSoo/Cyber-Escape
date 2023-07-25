@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isdash;
     public float defaultTime;
+    public float damage = 5f;
+
     private float dashTime;
 
     public float dashCooldown = 2.0f;
@@ -161,10 +163,16 @@ public class PlayerController : MonoBehaviour
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
         foreach (Collider2D collider in collider2Ds)
         {
-            if (collider.tag == "Monster")
+            if (collider.CompareTag("Monster")  || collider.CompareTag("Dummy"))
             {
                 Debug.Log("¼º°ø!");
                 collider.gameObject.GetComponent<HitObject>().ChangeColor();
+                collider.gameObject.GetComponent<MonsterComponent>().TakeDamage(damage);
+            }
+
+            if (collider.CompareTag("Dummy"))
+            {
+                collider.gameObject.GetComponent<HitObject>().AnimationStart();
             }
         }
     }

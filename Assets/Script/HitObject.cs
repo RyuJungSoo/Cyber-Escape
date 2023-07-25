@@ -9,6 +9,7 @@ public class HitObject : MonoBehaviour
     SpriteRenderer renderer;
     Color originColor;
     bool isChange = false;
+    bool isFadeOut = false;
     float changeTimer = 0;
     void Start()
     {
@@ -27,6 +28,11 @@ public class HitObject : MonoBehaviour
                 renderer.color = originColor;
                 isChange = false;
                 changeTimer = 0;
+
+                if (gameObject.CompareTag("Dummy"))
+                {
+                    gameObject.GetComponent<DummyController>().animator.SetBool("isAttacked", false);
+                }
             }
             
         }
@@ -38,5 +44,29 @@ public class HitObject : MonoBehaviour
         isChange = true;
     }
 
+    public void AnimationStart()
+    {
+        gameObject.GetComponent<DummyController>().animator.SetBool("isAttacked", true);
+    }
+
+    public void FadeOutStart()
+    {
+        if (!isFadeOut)
+        {
+            isFadeOut = true;
+            StartCoroutine("FadeOut");
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        while (renderer.color.a > 0f)
+        {
+            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime);
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
+    }
   
 }

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnumManager : MonoBehaviour
+public class DummyController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Animator animator;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -15,17 +16,4 @@ public class EnumManager : MonoBehaviour
     {
         
     }
-}
-
-namespace EnumSpace
-{
-    public enum MonsterType
-    { 
-        ROADROBOT,
-        ATTACKROBOT,
-        RUSHROBOT,
-        DUMMY
-    }
-
-
 }

@@ -691,11 +691,15 @@ GameObject:
   m_Component:
   - component: {fileID: 52116502}
   - component: {fileID: 52116501}
+  - component: {fileID: 52116504}
   - component: {fileID: 52116500}
   - component: {fileID: 52116503}
+  - component: {fileID: 52116505}
+  - component: {fileID: 52116506}
+  - component: {fileID: 52116507}
   m_Layer: 6
   m_Name: dummy
-  m_TagString: Monster
+  m_TagString: Dummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -767,7 +771,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 15e3964cfdcafaf43afa8aee8e9974c1, type: 3}
+  m_Sprite: {fileID: -1276997556, guid: 43314d4b070dc7940b0976d8282b459e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -786,7 +790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52116499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.35, y: -0.95, z: -1}
+  m_LocalPosition: {x: 14.35, y: -1.1, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -805,6 +809,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a2defca37be248864dbbcf212b243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &52116504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52116499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f16541946b063a41819e37460972ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 52116505}
+--- !u!95 &52116505
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52116499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da1e16ebcb6ae23409b5485e07b6b8cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &52116506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52116499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4710dc50e03cc4d8d6bdd27b5b5d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsHuman: 0
+  Hp: 10
+  MaxHp: 10
+  damage: 3
+  speed: 5
+  moveRange: 2
+  isWalk: 1
+  direction: {x: -1, y: 0}
+  originPos: {x: 0, y: 0, z: 0}
+  type: 3
+--- !u!50 &52116507
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52116499}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &81163028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,7 +4356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.6, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20878,6 +20958,7 @@ MonoBehaviour:
   speed: 5
   direction: {x: 0, y: 0, z: 0}
   defaultTime: 0.2
+  damage: 5
   dashCooldown: 2
   pos: {fileID: 1898720643}
   boxSize: {x: 1.07, y: 1.73}
@@ -21328,7 +21409,7 @@ RectTransform:
   - {fileID: 429957560}
   - {fileID: 1896529278}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -21344,7 +21425,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 330285356265330809, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 330285356265330809, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,6 +13,7 @@ TagManager:
   - task-wire
   - TaskWireR
   - TaskWireL
+  - Dummy
   layers:
   - Default
   - TransparentFX

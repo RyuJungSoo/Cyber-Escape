@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnumSpace;
+using Unity.VisualScripting.FullSerializer.Internal;
+
 public class MonsterComponent : MonoBehaviour
 {
     public bool IsHuman; // 사람인지 로봇인지 유무
@@ -38,6 +40,7 @@ public class MonsterComponent : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (type == MonsterType.DUMMY) return;
 
         if (isWalk)
             Move();
@@ -48,7 +51,7 @@ public class MonsterComponent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && type != MonsterType.DUMMY)
         {
             collision.gameObject.GetComponent<HitObject>().ChangeColor();
         }
@@ -129,7 +132,8 @@ public class MonsterComponent : MonoBehaviour
         Hp -= PlayerDamage;
         if (Hp <= 0)
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
+           gameObject.GetComponent<HitObject>().FadeOutStart();
         }
     }
 }
