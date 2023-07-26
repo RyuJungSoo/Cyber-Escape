@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     BoxCollider2D col2D;
     AudioSource audioSource;
+    SpriteRenderer spriteRenderer;
 
     public AudioClip[] audioClips;
     public float speed = 5.0f;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         this.animator = GetComponent<Animator>();
         this.col2D = GetComponent<BoxCollider2D>();
         this.audioSource = GetComponent<AudioSource>();
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
         direction = Vector2.zero;
     }    
 
@@ -152,7 +154,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             dashTime -= Time.deltaTime;
-            this.gameObject.layer = 7;
+            this.gameObject.layer = 8;
             animator.SetBool("isDash", true);
             transform.Translate(key * 0.1f, 0, 0);
         }
@@ -191,6 +193,41 @@ public class PlayerController : MonoBehaviour
                 audioSource.Play();
             }
         }
+    }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Laser")
+        {
+            OnDamaged(collision.transform.position);
+        }
+    }
+
+    void OnDamaged(Vector2 targetPos)
+    {
+        Debug.Log("레이저에 닿았습니다!");
+
+        this.gameObject.layer = 9;
+
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        if (dirc == 1)
+        {
+            this.PlayerRigid.AddForce(new Vector2(dirc, 1) * 3, ForceMode2D.Impulse);
+        }
+        else
+        {
+            this.PlayerRigid.AddForce(new Vector2(dirc * 2, 1) * 3, ForceMode2D.Impulse);
+        }
+
+        Invoke("OffDamaged", 2);
+    }
+
+    void OffDamaged()
+    {
+        this.gameObject.layer = 0;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     private void OnDrawGizmos()
