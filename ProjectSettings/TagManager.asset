@@ -14,6 +14,7 @@ TagManager:
   - TaskWireR
   - TaskWireL
   - Dummy
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -22,9 +23,9 @@ TagManager:
   - Water
   - UI
   - Enemy
+  - Laser
   - PlayerDashing
-  - 
-  - 
+  - PlayerDamaged
   - 
   - 
   - 
