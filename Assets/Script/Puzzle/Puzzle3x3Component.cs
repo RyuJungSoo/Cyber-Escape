@@ -14,30 +14,27 @@ public class Puzzle3x3Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //myCoroutine = ShowAnswers();
-        //StartCoroutine(myCoroutine);
+        myCoroutine = ShowAnswers(Interval_Time);
+        StartCoroutine(myCoroutine);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (index >= answers.Length)
-        {
-            StopCoroutine("ShowAnswers");
-            Invoke("ShowStop", 2f);
-        }
-        else
-            StartCoroutine("ShowAnswers");
         
     }
 
-    IEnumerator ShowAnswers()
+    IEnumerator ShowAnswers(float time)
     {
+        int index = 0;
 
-        yield return new WaitForSeconds(Interval_Time);
-        answers[index].SetActive(true);
-        index++;
-        
+        while (index < answers.Length)
+        {
+            yield return new WaitForSeconds(time);
+            answers[index].SetActive(true);
+            index++;
+        }
+        Invoke("ShowStop", time);
     }
 
     void ShowStop()
