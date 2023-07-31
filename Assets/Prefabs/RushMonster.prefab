@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1227509333, guid: 74d2d6bab855e42408a10f5ed4d18354, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -150,6 +150,7 @@ MonoBehaviour:
   moveRange: 2
   isWalk: 1
   direction: {x: -1, y: 0}
+  originPos: {x: 0, y: 0, z: 0}
   type: 2
 --- !u!61 &2466163414716926364
 BoxCollider2D:
@@ -189,3 +190,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a2defca37be248864dbbcf212b243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFadeOut: 0

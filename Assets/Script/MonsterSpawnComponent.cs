@@ -31,6 +31,7 @@ public class MonsterSpawnComponent : MonoBehaviour
     {
         if (!isStartSpawn) return;
 
+
         if (!isInfiniteSpawn && spawnCnt >= maxSpawnCnt) return;
 
         spawnTimer += Time.deltaTime;
@@ -43,11 +44,15 @@ public class MonsterSpawnComponent : MonoBehaviour
             spawnCnt++;
             spawnTimer = 0;
         }
+
+        if (spawnCnt == maxSpawnCnt)
+            gameObject.GetComponent<Animator>().SetBool("isDoorOpen", false);
     }
 
     public void Spawn(MonsterType type)
     {
         GameObject monster = Instantiate(monsters[(int)type] , transform.position - new Vector3(0,0.15f,-2f), Quaternion.identity) as GameObject;
+        monster.GetComponent<MonsterComponent>().originPos = monster.transform.position;
         monster.GetComponent<MonsterComponent>().type = type;
     }
 }

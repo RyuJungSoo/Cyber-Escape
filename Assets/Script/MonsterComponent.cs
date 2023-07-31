@@ -13,6 +13,7 @@ public class MonsterComponent : MonoBehaviour
     public float speed = 5; // 스피드
     public float moveRange = 2; // 좌우 이동 거리
     public bool isWalk = true;
+
     public Vector2 direction = new Vector2(-1, 0);
     public Vector3 originPos;
 
@@ -23,6 +24,7 @@ public class MonsterComponent : MonoBehaviour
     private Animator animator;
     private float angle = 0;
     private float attackTimer = 0f;
+    private bool isDead = false;
 
     GameObject Player;
 
@@ -30,7 +32,7 @@ public class MonsterComponent : MonoBehaviour
     void Start()
     {
         EnemyRigid = GetComponent<Rigidbody2D>();
-        originPos = EnemyRigid.position;
+        //originPos = EnemyRigid.position;
         animator = GetComponent<Animator>();
         animator.SetBool("isWalk", true);
 
@@ -41,12 +43,15 @@ public class MonsterComponent : MonoBehaviour
     void FixedUpdate()
     {
         if (type == MonsterType.DUMMY) return;
-
-        if (isWalk)
+        if (Hp <= 0)
+        {
+            isDead = true;
+            animator.speed = 0.0f;
+        }
+        if (isWalk && !isDead)
             Move();
 
         attackTimer += Time.deltaTime;
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,7 +71,6 @@ public class MonsterComponent : MonoBehaviour
     private void Move()
     {
         animator.SetBool("isWalk", true);
-        
         transform.localScale=  new Vector3(direction.x, transform.localScale.y, transform.localScale.z);
         attackTimer += Time.deltaTime;
 
@@ -77,6 +81,7 @@ public class MonsterComponent : MonoBehaviour
         }
 
         EnemyRigid.MovePosition(EnemyRigid.position + direction * speed * Time.fixedDeltaTime); // transform으로 이동시키면 벽을 뚫고 갈 수 있기 때문에 MovePosition을 사용함.
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1);
 
 
         if (attackTimer >= 2f && type == MonsterType.ATTACKROBOT)

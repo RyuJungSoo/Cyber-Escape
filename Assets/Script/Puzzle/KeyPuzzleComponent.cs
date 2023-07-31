@@ -45,7 +45,7 @@ public class KeyPuzzleComponent : MonoBehaviour
 
         if (Correct_cnt == Answer_cnt) // ¸ÂÃá °æ¿ì
         {
-            gameObject.GetComponent<PuzzleCompononent>().isSolved = true;
+            gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = true;
             isSolved = true;
             gameObject.SetActive(false);
         }
