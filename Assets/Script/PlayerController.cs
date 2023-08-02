@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isGround = true;
     public bool isPuzzleSolving = false;
-
+    public bool isDead = false;
 
     void Start()
     {
