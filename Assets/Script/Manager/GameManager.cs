@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    SpriteRenderer renderer;
     public static GameManager Instance = null; // 어디서든 접근할 수 있도록 인스턴스 선언
     [SerializeField]private int Stage = 0;
     public Vector2[] Stage_Pos;
     public GameObject Player;
-    public bool isOver;
     private PlayerController playerController;
+    private HitObject hitObject;
+
+    public float Respawn_Time = 1f;
 
 
     private void Awake()
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerController = Player.GetComponent<PlayerController>();
+        hitObject = Player.GetComponent<HitObject>();
+        renderer = Player.GetComponent<SpriteRenderer>();
         UiManager.Instance.HpUI_Update();
     }
 
@@ -49,13 +54,20 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
+        Player.SetActive(true);
         Player.transform.position = Stage_Pos[Stage];
+        renderer.color = new Color(1,1,1);
+        playerController.enabled = true;
+        playerController.isDead = false;
+        playerController.Hp = playerController.MaxHp;
+        UiManager.Instance.HpUI_Update();
     }
+
 
     public void PlayerDamage(float Damage) 
     {
         playerController.Hp -= Damage;
-        if (playerController.Hp <= 0)
+        if (playerController.Hp < 0)
         {
             playerController.Hp = 0;
         }
@@ -64,8 +76,12 @@ public class GameManager : MonoBehaviour
 
         if (playerController.Hp <= 0)
         {
-            isOver = true;
-            Debug.Log("Game Over");
+            playerController.isDead = true;
+            playerController.enabled = false;
+            hitObject.FadeOutStart();
+
         }
     }
+
+
 }

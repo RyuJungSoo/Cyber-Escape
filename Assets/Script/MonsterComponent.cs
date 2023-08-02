@@ -58,6 +58,9 @@ public class MonsterComponent : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && type != MonsterType.DUMMY)
         {
+            if (collision.gameObject.GetComponent<PlayerController>().isDead == true)
+                return;
+
             collision.gameObject.GetComponent<HitObject>().ChangeColor();
             GameManager.Instance.PlayerDamage(damage);
         }
@@ -112,7 +115,8 @@ public class MonsterComponent : MonoBehaviour
         {
             if (hit.gameObject.CompareTag("Player"))
             {
-
+                if (hit.gameObject.GetComponent<PlayerController>().isDead == true)
+                    return;
                 if (hit.gameObject.transform.position.x > transform.position.x)
                     transform.localScale = new Vector2(1, transform.localScale.y);
                 else

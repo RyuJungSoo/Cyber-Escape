@@ -9,6 +9,7 @@ public class HitObject : MonoBehaviour
     SpriteRenderer renderer;
     Color originColor;
     bool isChange = false;
+    public bool isPlayer = false;
     public bool isFadeOut = false;
     float changeTimer = 0;
     void Start()
@@ -63,10 +64,16 @@ public class HitObject : MonoBehaviour
         while (renderer.color.a > 0f)
         {
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime);
+            Debug.Log(renderer.color);
             yield return null;
         }
 
         gameObject.SetActive(false);
+        if (isPlayer == true)
+        {
+            GameManager.Instance.Respawn();
+        }
     }
-  
+
+
 }
