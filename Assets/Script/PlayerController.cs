@@ -199,11 +199,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Laser")
         {
-            OnDamaged(collision.transform.position);
+            OnDamaged(collision.transform.position, true,3);
         }
     }
 
-    void OnDamaged(Vector2 targetPos)
+    
+
+    public void OnDamaged(Vector2 targetPos, bool isPushed, float power)
     {
         Debug.Log("레이저에 닿았습니다!");
 
@@ -211,14 +213,19 @@ public class PlayerController : MonoBehaviour
 
         spriteRenderer.color = new Color(1, 1, 1, 0.5f);
 
-        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        if (dirc == 1)
+        if (isPushed)
         {
-            this.PlayerRigid.AddForce(new Vector2(dirc, 1) * 3, ForceMode2D.Impulse);
-        }
-        else
-        {
-            this.PlayerRigid.AddForce(new Vector2(dirc * 2, 1) * 3, ForceMode2D.Impulse);
+            Debug.Log("밀었습니다!");
+
+            int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+            if (dirc == 1)
+            {
+                this.PlayerRigid.AddForce(new Vector2(dirc, 1) * power, ForceMode2D.Impulse);
+            }
+            else
+            {
+                this.PlayerRigid.AddForce(new Vector2(dirc, 2) * power, ForceMode2D.Impulse);
+            }
         }
 
         Invoke("OffDamaged", 2);

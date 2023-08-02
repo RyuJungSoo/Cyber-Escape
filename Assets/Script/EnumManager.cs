@@ -27,5 +27,11 @@ namespace EnumSpace
         DUMMY
     }
 
+    public enum ObstacleType
+    {
+        SPIKETRAP,
+        PRESSTRAP
+    }
+
 
 }
