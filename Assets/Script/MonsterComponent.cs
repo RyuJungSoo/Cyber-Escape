@@ -59,6 +59,7 @@ public class MonsterComponent : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && type != MonsterType.DUMMY)
         {
             collision.gameObject.GetComponent<HitObject>().ChangeColor();
+            GameManager.Instance.PlayerDamage(damage);
         }
 
         /*if (collision.gameObject.CompareTag("Wall"))
@@ -118,6 +119,7 @@ public class MonsterComponent : MonoBehaviour
                     transform.localScale = new Vector2(-1, transform.localScale.y);
 
                 hit.gameObject.GetComponent<HitObject>().ChangeColor();
+                GameManager.Instance.PlayerDamage(damage);
                 Debug.Log("¶§·È½À´Ï´Ù.");
             }
         }

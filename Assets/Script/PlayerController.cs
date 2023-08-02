@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     public AudioClip[] audioClips;
+    public float Hp = 100;
+    public float MaxHp = 100;
     public float speed = 5.0f;
     public Vector3 direction;
 
