@@ -76,20 +76,28 @@ public class FixWiringTask : MonoBehaviour
         {
             if (mSelectedWire != null)
             {
-                RaycastHit2D[] hits = Physics2D.RaycastAll(Input.mousePosition, Vector2.right, 1f);
-                Debug.Log(hits);
+
+                Collider2D[] hits = Physics2D.OverlapCircleAll(mSelectedWire.gameObject.transform.GetChild(0).position + new Vector3(25, 0f),5);
+                //RaycastHit2D[] hits = Physics2D.RaycastAll(Input.mousePosition, Vector2.right, 1f);
                 foreach (var hit in hits)
                 {
-                    if (hit.collider != null && hit.collider.CompareTag("TaskWireR"))
+                    if (hit != null && hit.CompareTag("TaskWireR"))
                     {
-                        var right = hit.collider.GetComponentInParent<RightWire>();
+                        var right = hit.GetComponentInParent<RightWire>();
                         if (right != null)
                         {
-                            mSelectedWire.SetTarget(hit.transform.position, -50f);
+                           
                             mSelectedWire.ConnectWire(right);
                             right.ConnectWire(mSelectedWire);
                             mSelectedWire = null;
                             if (right.IsConnected) correctNum++;
+                            if (correctNum == 4)
+                            {
+                                gameObject.GetComponent<PuzzleCompononent>().isSolved = true;
+                                gameObject.GetComponent<PuzzleCompononent>().isFailed = false;
+                                gameObject.SetActive(false);
+
+                            }
                             return;
                         }
                     }
