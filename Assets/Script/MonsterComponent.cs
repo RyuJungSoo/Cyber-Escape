@@ -147,4 +147,16 @@ public class MonsterComponent : MonoBehaviour
            gameObject.GetComponent<HitObject>().FadeOutStart();
         }
     }
+
+    public void Reset()
+    {
+        Hp = MaxHp;
+        isDead = false;
+        isWalk = true;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
+        GetComponent<Animator>().SetBool("isWalk", true);
+        animator.speed = 1f;
+        attackTimer = 0;
+        GetComponent<HitObject>().isFadeOut = false;
+    }
 }

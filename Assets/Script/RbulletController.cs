@@ -19,7 +19,7 @@ public class RbulletController : MonoBehaviour
 
         if (transform.position.x < 48.0f)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         Vector2 p1 = transform.position;
@@ -34,7 +34,7 @@ public class RbulletController : MonoBehaviour
 
         if (d < r1 + r2)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -20,9 +20,11 @@ public class RbulletGenerator : MonoBehaviour
         if (this.delta > this.span)
         {
             this.delta = 0;
-            GameObject go = Instantiate(RbulletPrefab);
             float py = Random.Range(-1.5f, 3.5f);
-            go.transform.position = new Vector3(98.0f, py, -1);
+            //GameObject go = Instantiate(RbulletPrefab);
+            GameObject go = PoolManager.Instance.BulletGet(0, new Vector3(98.0f, py, -1));
+
         }
+        
     }
 }

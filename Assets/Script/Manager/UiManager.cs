@@ -34,6 +34,6 @@ public class UiManager : MonoBehaviour
 
 
         HpText.text = Player_Hp.ToString();
-        HpBar.fillAmount = Player_Hp / Player_MaxHp * Player_MaxHp;
+        HpBar.fillAmount = Player_Hp / Player_MaxHp;
     }
 }
