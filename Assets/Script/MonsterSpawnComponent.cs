@@ -51,7 +51,8 @@ public class MonsterSpawnComponent : MonoBehaviour
 
     public void Spawn(MonsterType type)
     {
-        GameObject monster = Instantiate(monsters[(int)type] , transform.position - new Vector3(0,0.15f,-2f), Quaternion.identity) as GameObject;
+        //GameObject monster = Instantiate(monsters[(int)type] , transform.position - new Vector3(0,0.15f,-2f), Quaternion.identity) as GameObject;
+        GameObject monster = PoolManager.Instance.enemyGet((int)type, transform.position - new Vector3(0, 0.15f, -2f));
         monster.GetComponent<MonsterComponent>().originPos = monster.transform.position;
         monster.GetComponent<MonsterComponent>().type = type;
     }

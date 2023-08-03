@@ -64,7 +64,6 @@ public class HitObject : MonoBehaviour
         while (renderer.color.a > 0f)
         {
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime);
-            Debug.Log(renderer.color);
             yield return null;
         }
 
