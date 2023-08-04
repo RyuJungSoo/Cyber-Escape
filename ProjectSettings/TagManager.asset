@@ -29,7 +29,7 @@ TagManager:
   - PlayerDashing
   - PlayerDamaged
   - Obstacle
-  - 
+  - Objects
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 1869258139
     locked: 0
