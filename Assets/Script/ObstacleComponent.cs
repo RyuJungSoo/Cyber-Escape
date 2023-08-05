@@ -26,8 +26,8 @@ public class ObstacleComponent : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !isNotAttacking)
         {
-            collision.gameObject.GetComponent<PlayerController>().OnDamaged(transform.position,false, 0);
-           
+            collision.gameObject.GetComponent<PlayerController>().OnDamaged(transform.position,true,3);
+            GameManager.Instance.PlayerDamage(damage);
         }
     }
 
@@ -36,6 +36,7 @@ public class ObstacleComponent : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !isNotAttacking)
         {
             collision.gameObject.GetComponent<PlayerController>().OnDamaged(transform.position, true,3);
+            GameManager.Instance.PlayerDamage(damage);
         }
     }
 
@@ -45,6 +46,7 @@ public class ObstacleComponent : MonoBehaviour
         {
             float y = collision.gameObject.transform.localScale.y < 0.3f ?  0.3f : collision.gameObject.transform.localScale.y;
             collision.gameObject.transform.localScale = new Vector3(1,  y-Time.deltaTime * 2f, 1);
+            GameManager.Instance.PlayerDamage(damage);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -52,6 +54,7 @@ public class ObstacleComponent : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && type == ObstacleType.PRESSTRAP)
         {
             collision.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            GameManager.Instance.PlayerDamage(damage);
         }
     }
 
