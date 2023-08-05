@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class PoolManager : MonoBehaviour
     // 프리팹들을 보관할 변수
     public GameObject[] EnemyPrefabs;
     public GameObject[] BulletPrefabs;
+
+    public int currentEnemyCnt = -1;
 
     // 풀 담당을 하는 리스트들
     List<GameObject>[] EnemyPools;
@@ -59,7 +62,6 @@ public class PoolManager : MonoBehaviour
             select = Instantiate(EnemyPrefabs[index], pos, Quaternion.identity, transform);
             EnemyPools[index].Add(select);
         }
-
         return select;
     }
 
@@ -89,5 +91,27 @@ public class PoolManager : MonoBehaviour
         }
 
         return select;
+    }
+
+    public bool IsEnemy()
+    {
+        int totalNum = 0;
+        int deadEnemyNum = 0;
+
+        for (int i = 0; i < EnemyPools.Length; i++) 
+        {
+            Debug.Log("뭘까");
+            foreach (GameObject item in EnemyPools[i])
+            {
+                totalNum++;
+                if (!item.activeSelf)
+                    deadEnemyNum++;
+            }
+        }
+
+        Debug.Log("총수 " + totalNum);
+        Debug.Log("수 " + deadEnemyNum);
+
+        return (deadEnemyNum == totalNum);
     }
 }

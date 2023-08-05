@@ -18,8 +18,9 @@ public class MonsterSpawnComponent : MonoBehaviour
 
     public int doorNum = 0; // 패턴 다르게 할 가능성이 있어서 문 번호
 
-    public float spawnTimer = 0f; // 스폰 타이머
+    public float spawnTimer = 5f; // 스폰 타이머
 
+    bool isInit = false;
 
     void Start()
     {
@@ -31,8 +32,12 @@ public class MonsterSpawnComponent : MonoBehaviour
     {
         if (!isStartSpawn) return;
 
-
         if (!isInfiniteSpawn && spawnCnt >= maxSpawnCnt) return;
+        if (!isInit)
+        {
+            PoolManager.Instance.currentEnemyCnt = maxSpawnCnt;
+            isInit = true;
+        }
 
         spawnTimer += Time.deltaTime;
 
