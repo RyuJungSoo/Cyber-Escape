@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDamaged(Vector2 targetPos, bool isPushed, float power)
     {
-        Debug.Log("레이저에 닿았습니다!");
+        Debug.Log("장애물에 닿았습니다!");
 
         this.gameObject.layer = 9;
 
@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                this.PlayerRigid.AddForce(new Vector2(dirc, 2) * power, ForceMode2D.Impulse);
+                this.PlayerRigid.AddForce(new Vector2(dirc * 2, 1) * power, ForceMode2D.Impulse);
             }
         }
 
