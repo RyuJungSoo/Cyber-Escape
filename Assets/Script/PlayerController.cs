@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public float defaultTime;
     public float damage = 5f;
 
+    public Image skill_UI;
     private float dashTime;
 
     public float dashCooldown = 2.0f;
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour
         {
             isdash = true;
             dashTimer = dashCooldown;
+            StartCoroutine(CoolTime());
             PlayEffect(1);
         }
 
@@ -243,5 +246,20 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
+    }
+
+
+    IEnumerator CoolTime()
+    {
+        print("쿨타임 코루틴 실행");
+
+        while (dashTimer >= 0)
+        {
+
+            skill_UI.fillAmount = (1.0f * (dashCooldown - dashTimer) / dashCooldown);
+            yield return new WaitForFixedUpdate();
+        }
+        print("쿨타임 코루틴 완료");
+        skill_UI.fillAmount = 0;
     }
 }
