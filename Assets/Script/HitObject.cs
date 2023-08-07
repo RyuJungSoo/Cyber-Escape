@@ -72,6 +72,9 @@ public class HitObject : MonoBehaviour
         {
             GameManager.Instance.Respawn();
         }
+        else
+            PoolManager.Instance.currentEnemyCnt--;
+
     }
 
 

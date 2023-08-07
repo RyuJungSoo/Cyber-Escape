@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33c93cd8816751a4481ea3bb7e0fbbe8
+guid: 7121f19c550a5564897773dcb4a78685
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hammer_0
+      name: EnemyMan_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 64
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 720b4587389f6e447a3acd367f000194
-      internalID: 734473028
+      spriteID: ea928f7044a0a08418b654e900088603
+      internalID: -2121500305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hammer_1
+      name: EnemyMan_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 320
         y: 0
-        width: 32
-        height: 64
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27bf83518d6656f48886f0486e94b701
-      internalID: -617388516
+      spriteID: 91d4b52c17807154f84376181e88c3d9
+      internalID: 1509498830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hammer_2
+      name: EnemyMan_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 640
         y: 0
-        width: 32
-        height: 64
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59e254c74434eb34e9fa57eae8ce83ad
-      internalID: 1364517901
+      spriteID: 809bc82366262564498d8f79a844fd04
+      internalID: 1507048496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hammer_3
+      name: EnemyMan_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 960
         y: 0
-        width: 32
-        height: 64
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6526e6195e1a4f41872151572364967
-      internalID: -1960314348
+      spriteID: 3862317f8495f0e4686a335627608ef5
+      internalID: 897492883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hammer_4
+      name: EnemyMan_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1280
         y: 0
-        width: 32
-        height: 64
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,71 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d158534716702534aa790f78c873a41b
-      internalID: 1351752294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hammer_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f53ce3f221dd7d24b84472eded6c38b6
-      internalID: 1860635984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hammer_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2a399556e966db4d999c63b84f88c5c
-      internalID: -333802083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hammer_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f00746f44cfc5fe4bbcb8c9583627fe7
-      internalID: 1602468440
+      spriteID: b905e3b5113aca845ba8b519cdfc5310
+      internalID: 1976424251
       vertices: []
       indices: 
       edges: []
@@ -283,14 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hammer_2: 1364517901
-      Hammer_1: -617388516
-      Hammer_4: 1351752294
-      Hammer_7: 1602468440
-      Hammer_3: -1960314348
-      Hammer_0: 734473028
-      Hammer_5: 1860635984
-      Hammer_6: -333802083
+      EnemyMan_1: 1509498830
+      EnemyMan_3: 897492883
+      EnemyMan_0: -2121500305
+      EnemyMan_4: 1976424251
+      EnemyMan_2: 1507048496
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
