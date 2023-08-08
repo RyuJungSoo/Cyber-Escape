@@ -188,6 +188,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlayEffect(int index)
     {
+        if (UiManager.Instance.PauseUI.active == true)
+            return;
         if (index != 0)
             audioSource.PlayOneShot(audioClips[index]);
         else

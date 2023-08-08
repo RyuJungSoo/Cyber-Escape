@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
     public static UiManager Instance = null; // 어디서든 접근할 수 있도록 인스턴스 선언
     public Image HpBar;
     public Text HpText;
+    public GameObject PauseUI;
 
     private void Awake()
     {
@@ -21,11 +22,8 @@ public class UiManager : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+
 
     public void HpUI_Update()
     {
@@ -35,5 +33,20 @@ public class UiManager : MonoBehaviour
 
         HpText.text = Player_Hp.ToString();
         HpBar.fillAmount = Player_Hp / Player_MaxHp;
+    }
+
+    public void PauseUI_On()
+    {
+
+        Time.timeScale = 0;
+        PauseUI.active = true;
+    
+    }
+
+    public void PauseUI_Off()
+    {
+
+        Time.timeScale = 1;
+        PauseUI.active = false;
     }
 }
