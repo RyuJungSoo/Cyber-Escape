@@ -64,9 +64,15 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void PlayerDamage(float Damage) 
+    public void PlayerDamage(float Damage,bool isRed) 
     {
+        //피격시 0.5초 무적
+        if (Player.GetComponent<HitObject>().isChange) return;
+        Player.GetComponent<PlayerController>().HitSoundPlay();
+        Player.GetComponent<HitObject>().ChangeColor(isRed);
+
         playerController.Hp -= Damage;
+
         if (playerController.Hp < 0)
         {
             playerController.Hp = 0;
@@ -82,6 +88,4 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
-
 }

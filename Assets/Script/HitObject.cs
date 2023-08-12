@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class HitObject : MonoBehaviour
 
     SpriteRenderer renderer;
     Color originColor;
-    bool isChange = false;
+    public bool isChange = false;
     public bool isPlayer = false;
     public bool isFadeOut = false;
     float changeTimer = 0;
@@ -39,9 +40,12 @@ public class HitObject : MonoBehaviour
         }
     }
 
-    public void ChangeColor()
-    {        
-        renderer.color = Color.red;
+    public void ChangeColor(bool isRed)
+    {
+        if (isRed)
+            renderer.color = Color.red;
+        else
+            renderer.color = new Color(1, 1, 1, 0.5f);
         isChange = true;
     }
 

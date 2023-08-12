@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,11 @@ public class StageDoorComponent : MonoBehaviour
 
     public float waitTimer = 3f;
     public bool isCheck = false;
+    public bool isSoundPlay = false;
+    float maxY;
     void Start()
     {
+        maxY = transform.position.y + 3.6f;
     }
 
     // Update is called once per frame
@@ -36,15 +40,24 @@ public class StageDoorComponent : MonoBehaviour
             PoolManager.Instance.currentEnemyCnt = -1;
         }
 
-        if (isDoorOpen && transform.position.y < 2.6f)
+        if (isDoorOpen && !isSoundPlay && transform.position.y > maxY - 1.8f)
+        {
+            SoundManager.Instance.AudioPlay(EnumSpace.SoundType.STAGEDOOROPEN);
+            isSoundPlay = true;
+        }    
+
+        if (isDoorOpen && transform.position.y < maxY)
         {
             waitTimer -= Time.deltaTime;
             if (waitTimer <= 0)
                 transform.position = new Vector3(transform.position.x, transform.position.y + upSpeed * Time.deltaTime, -2f);
         }
 
-        if (transform.position.y >= 2.6f)
+        if (transform.position.y >= maxY)
+        {
+            GameManager.Instance.NextStage();
             Destroy(this);
+        }
             
     }
 }

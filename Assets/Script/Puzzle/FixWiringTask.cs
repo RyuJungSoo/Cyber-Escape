@@ -77,7 +77,7 @@ public class FixWiringTask : MonoBehaviour
             if (mSelectedWire != null)
             {
 
-                Collider2D[] hits = Physics2D.OverlapCircleAll(mSelectedWire.gameObject.transform.GetChild(0).position + new Vector3(25, 0f),5);
+                Collider2D[] hits = Physics2D.OverlapCircleAll(mSelectedWire.gameObject.transform.GetChild(0).position + new Vector3(25, 0f),7);
                 //RaycastHit2D[] hits = Physics2D.RaycastAll(Input.mousePosition, Vector2.right, 1f);
                 foreach (var hit in hits)
                 {

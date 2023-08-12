@@ -22,10 +22,11 @@ public class CameraController : MonoBehaviour
 
         //카메라 position 제한
 
-        yPos = Mathf.Clamp(yPos, 0.05f, 5f);
-        xPos = Mathf.Clamp(xPos, -0.01f, 100f);
+        yPos = Mathf.Clamp(yPos, -21f, 5f);
+        xPos = Mathf.Clamp(xPos, -0.01f, 264.1f);
 
-
+        if (Player.transform.position.x <= 99.5f)
+            yPos = 0f;
         transform.position = new Vector3(xPos, yPos, transform.position.z);
     }
 

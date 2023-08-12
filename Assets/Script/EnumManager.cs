@@ -33,5 +33,13 @@ namespace EnumSpace
         PRESSTRAP
     }
 
-
+    public enum SoundType
+    {
+        TIMEOVER,
+        PUZZLECORRECT,
+        DOOROPEN,
+        DOORCLOSE,
+        STAGEDOOROPEN,
+        WIRECORRECT
+    }
 }
