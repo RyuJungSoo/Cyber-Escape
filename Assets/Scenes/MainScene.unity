@@ -365,7 +365,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -572,7 +572,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -1533,7 +1533,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -1638,7 +1638,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -1856,7 +1856,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -2288,7 +2288,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -2539,7 +2539,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -2927,7 +2927,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1461791784, guid: 21be042845d2cff479e1bb89b7f9738e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -8335,6 +8335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Force: 5
+  isReverse: 1
 --- !u!61 &1757105080
 BoxCollider2D:
   m_ObjectHideFlags: 0
