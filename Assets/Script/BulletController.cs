@@ -35,6 +35,8 @@ public class BulletController : MonoBehaviour
 
         if (d < r1 + r2)
         {
+            GameManager.Instance.PlayerDamage(5f, false);
+
             gameObject.SetActive(false);
         }
     }

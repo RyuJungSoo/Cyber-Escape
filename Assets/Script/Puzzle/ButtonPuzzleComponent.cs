@@ -11,6 +11,9 @@ public class ButtonPuzzleComponent : MonoBehaviour
     public Sprite idle_img;
     public Sprite push_img;
 
+    AudioSource audioSource;
+    public AudioClip audioClip;
+
     private Image image;
     private PuzzleCompononent puzzleCompononent;
     private GameObject puzzleUI;
@@ -18,6 +21,7 @@ public class ButtonPuzzleComponent : MonoBehaviour
     void Start()
     {
         image = GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
         puzzleCompononent = transform.parent.gameObject.GetComponent<PuzzleCompononent>();
         puzzleUI = transform.parent.gameObject.transform.parent.gameObject;
     }
@@ -48,6 +52,8 @@ public class ButtonPuzzleComponent : MonoBehaviour
             puzzleCompononent.isSolved = true;
             puzzleUI.SetActive(false);
         }
+
+        audioSource.PlayOneShot(audioClip);
 
     }
 

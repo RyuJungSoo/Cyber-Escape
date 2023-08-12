@@ -59,6 +59,7 @@ public class RightWire : MonoBehaviour
         {
             mLightImage.color = Color.yellow;
             IsConnected = true;
+            SoundManager.Instance.AudioPlay(EnumSpace.SoundType.WIRECORRECT);
         }
         else
         {

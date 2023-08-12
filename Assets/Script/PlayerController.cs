@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -175,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 if (collider.gameObject.GetComponent<HitObject>().isFadeOut) return;
 
                 Debug.Log("성공!");
-                collider.gameObject.GetComponent<HitObject>().ChangeColor();
+                collider.gameObject.GetComponent<HitObject>().ChangeColor(true);
                 collider.gameObject.GetComponent<MonsterComponent>().TakeDamage(damage);
             }
 
@@ -218,8 +219,7 @@ public class PlayerController : MonoBehaviour
 
         this.gameObject.layer = 9;
 
-        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-
+        GameManager.Instance.PlayerDamage(5f, false);
         if (isPushed)
         {
             Debug.Log("밀었습니다!");
@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Invoke("OffDamaged", 2);
+        Invoke("OffDamaged", 0.5f);
     }
 
     void OffDamaged()
@@ -262,5 +262,10 @@ public class PlayerController : MonoBehaviour
         }
         print("쿨타임 코루틴 완료");
         skill_UI.fillAmount = 0;
+    }
+
+    public void HitSoundPlay()
+    {
+        audioSource.PlayOneShot(audioClips[4]);
     }
 }

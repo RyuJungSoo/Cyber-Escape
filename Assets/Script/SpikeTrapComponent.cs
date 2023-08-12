@@ -32,7 +32,7 @@ public class SpikeTrapComponent : MonoBehaviour
         //0.2초마다 SpriteRender의 sprite를 바꿈
 
         //첫번째 프레임일때 데미지 안들어가게 
-        obstacleComponent.isNotAttacking = length == 0 ? true : false;
+        obstacleComponent.isNotAttacking = length > 1 ? true : false;
         if (changeTimer >= 0.3f)
         {
             //바꾸는 줄

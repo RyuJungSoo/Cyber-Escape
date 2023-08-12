@@ -61,8 +61,7 @@ public class MonsterComponent : MonoBehaviour
             if (collision.gameObject.GetComponent<PlayerController>().isDead == true)
                 return;
 
-            collision.gameObject.GetComponent<HitObject>().ChangeColor();
-            GameManager.Instance.PlayerDamage(damage);
+            GameManager.Instance.PlayerDamage(damage , true);
         }
 
         /*if (collision.gameObject.CompareTag("Wall"))
@@ -122,8 +121,7 @@ public class MonsterComponent : MonoBehaviour
                 else
                     transform.localScale = new Vector2(-1, transform.localScale.y);
 
-                hit.gameObject.GetComponent<HitObject>().ChangeColor();
-                GameManager.Instance.PlayerDamage(damage);
+                GameManager.Instance.PlayerDamage(damage , true);
                 Debug.Log("¶§·È½À´Ï´Ù.");
             }
         }

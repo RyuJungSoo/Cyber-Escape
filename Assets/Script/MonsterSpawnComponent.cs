@@ -18,7 +18,7 @@ public class MonsterSpawnComponent : MonoBehaviour
 
     public int doorNum = 0; // 패턴 다르게 할 가능성이 있어서 문 번호
 
-    public float spawnTimer = 5f; // 스폰 타이머
+    public float spawnTimer = 4f; // 스폰 타이머
 
     bool isInit = false;
 
@@ -51,7 +51,10 @@ public class MonsterSpawnComponent : MonoBehaviour
         }
 
         if (spawnCnt == maxSpawnCnt)
+        {
             gameObject.GetComponent<Animator>().SetBool("isDoorOpen", false);
+            SoundManager.Instance.AudioPlay(SoundType.DOORCLOSE);
+        }
     }
 
     public void Spawn(MonsterType type)
