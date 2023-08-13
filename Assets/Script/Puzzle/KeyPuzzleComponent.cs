@@ -1,26 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyPuzzleComponent : MonoBehaviour
 {
-    public bool isFailed; // 실패 유무
-    public bool isSolved; // 해결 유무
-    public AudioClip[] audio;
-    public GameObject[] KeyImg;
-    public float LimitTime;
 
+    public AudioClip[] audio;
+    public GameObject[] PuzzleType;
+    private Transform[] KeyImgs;
+    //public float LimitTime;
+
+    private int index;
     private int Answer_cnt;
     private int Correct_cnt = 0;
     private AudioSource audioSource;
 
     private void Awake()
     {
-        if (isFailed == true) // 이미 실패한 예외처리 
+        // 문제를 푼 이력이 있는 경우 리셋
+        if (gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved == true || gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed == true)
         {
-            this.gameObject.active = false;
+            Reset();
         }
-        Answer_cnt = KeyImg.Length;
+
+        // 퍼즐 유형 중 하나 가져오기
+        index = Random.Range(0, PuzzleType.Length);
+        PuzzleType[index].SetActive(true);
+
+        // 답 가져오기
+        GameObject output = PuzzleType[index].transform.GetChild(1).gameObject;
+        KeyImgs = output.transform.GetComponentsInChildren<Transform>().Where(child => child != output.transform).ToArray();
+
+
+        foreach (Transform KeyImg in KeyImgs)
+            KeyImg.gameObject.SetActive(false);
+
+        // 답 갯수 저장
+        Answer_cnt = KeyImgs.Length;
     }
 
     private void Start()
@@ -32,12 +50,11 @@ public class KeyPuzzleComponent : MonoBehaviour
     void Update()
     {
 
-        if (LimitTime <= 0) // 시간 제한이 다 되면 종료
+        /*if (LimitTime <= 0) // 시간 제한이 다 되면 종료
         {
             gameObject.GetComponent<PuzzleCompononent>().isFailed = true;
-            isFailed = true;
             gameObject.SetActive(false);
-        }
+        }*/
 
         
         KeyCompare(KeyInput()); // 키 입력 후, 맞힌 유무에 따라 효과음 재생
@@ -46,7 +63,6 @@ public class KeyPuzzleComponent : MonoBehaviour
         if (Correct_cnt == Answer_cnt) // 맞춘 경우
         {
             gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = true;
-            isSolved = true;
             gameObject.SetActive(false);
         }
     }
@@ -77,14 +93,14 @@ public class KeyPuzzleComponent : MonoBehaviour
         if (InputKeyName == null) // 입력이 없는 경우
             return;
 
-        if (KeyImg[Correct_cnt].CompareTag("Up") && InputKeyName == "UpArrow")
-            KeyImg[Correct_cnt].active = true;
-        else if (KeyImg[Correct_cnt].CompareTag("Down") && InputKeyName == "DownArrow")
-            KeyImg[Correct_cnt].active = true;
-        else if (KeyImg[Correct_cnt].CompareTag("Left") && InputKeyName == "LeftArrow")
-            KeyImg[Correct_cnt].active = true;
-        else if (KeyImg[Correct_cnt].CompareTag("Right") && InputKeyName == "RightArrow")
-            KeyImg[Correct_cnt].active = true;
+        if (KeyImgs[Correct_cnt].gameObject.CompareTag("Up") && InputKeyName == "UpArrow")
+            KeyImgs[Correct_cnt].gameObject.active = true;
+        else if (KeyImgs[Correct_cnt].gameObject.CompareTag("Down") && InputKeyName == "DownArrow")
+            KeyImgs[Correct_cnt].gameObject.active = true;
+        else if (KeyImgs[Correct_cnt].gameObject.CompareTag("Left") && InputKeyName == "LeftArrow")
+            KeyImgs[Correct_cnt].gameObject.active = true;
+        else if (KeyImgs[Correct_cnt].gameObject.CompareTag("Right") && InputKeyName == "RightArrow")
+            KeyImgs[Correct_cnt].gameObject.active = true;
         else // 틀린 입력인 경우
         {
             SFXAudio(false);
@@ -104,5 +120,15 @@ public class KeyPuzzleComponent : MonoBehaviour
         else if (isCorrect == false)
             audioSource.clip = audio[0];
         audioSource.Play();
+    }
+
+    private void Reset()
+    {
+
+        foreach (Transform KeyImg in KeyImgs)
+            KeyImg.gameObject.SetActive(false);
+        PuzzleType[index].SetActive(false);
+        gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
+        gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = false;
     }
 }
