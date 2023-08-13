@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler 
 {
@@ -32,11 +33,13 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         isMauseDown = false;
+        
+        //Debug.Log(Vector3.Distance(piecePos.transform.position, transform.position));
         // 퍼즐 구멍 위치와의 거리가 snapOffset보다 작고 회전 각도가 서로 같으면
         if (Vector3.Distance(piecePos.transform.position, transform.position) < snapOffset && piecePos.CompareTag(tag)) 
         {
 
-
+            
 
 
             
@@ -58,7 +61,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Start()
     {
-        Puzzle = transform.parent.gameObject.transform.parent.gameObject;
+        Puzzle = transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (Input.GetKeyDown(KeyCode.E))
             {
 
-                transform.Rotate(new Vector3(0f, 0f, -45f));
+                transform.Rotate(new Vector3(0f, 0f, -RotationAngle));
                 if (transform.eulerAngles.z >= 360)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 else if(transform.eulerAngles.z < 0.1)
@@ -83,7 +86,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             else if (Input.GetKeyDown(KeyCode.Q))
             {
 
-                transform.Rotate(new Vector3(0f, 0f, 45f));
+                transform.Rotate(new Vector3(0f, 0f, RotationAngle));
                 if (transform.eulerAngles.z >= 360)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                 else if (transform.eulerAngles.z < 0.1)

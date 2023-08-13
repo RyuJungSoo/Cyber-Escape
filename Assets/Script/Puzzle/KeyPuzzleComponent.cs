@@ -125,8 +125,6 @@ public class KeyPuzzleComponent : MonoBehaviour
     private void Reset()
     {
 
-        foreach (Transform KeyImg in KeyImgs)
-            KeyImg.gameObject.SetActive(false);
         PuzzleType[index].SetActive(false);
         gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
         gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = false;
