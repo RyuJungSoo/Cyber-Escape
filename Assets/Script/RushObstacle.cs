@@ -29,7 +29,7 @@ public class RushObstacle : MonoBehaviour
                     if (i % 2 == 0)
                     {
                         transform.GetChild(i).gameObject.GetComponent<RushObstacleFadeOut>().fadeOut = true;
-                        Debug.Log(i);
+                        //Debug.Log(i);
                     }
 
                     if (childTimer >= 4)

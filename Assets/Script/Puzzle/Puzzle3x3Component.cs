@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Puzzle3x3Component : MonoBehaviour
 {
-    public GameObject[] answers;
-    public GameObject[] pieces;
+    public PieceCheckComponent pieceCheckComponent;
     public float Interval_Time; // 정답 보여주는 시간 텀
 
     private int index;
@@ -14,6 +13,7 @@ public class Puzzle3x3Component : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         myCoroutine = ShowAnswers(Interval_Time);
         StartCoroutine(myCoroutine);
     }
@@ -28,10 +28,10 @@ public class Puzzle3x3Component : MonoBehaviour
     {
         int index = 0;
 
-        while (index < answers.Length)
+        while (index < pieceCheckComponent.answers.Length)
         {
             yield return new WaitForSeconds(time);
-            answers[index].SetActive(true);
+            pieceCheckComponent.answers[index].gameObject.SetActive(true);
             index++;
         }
         Invoke("ShowStop", time);
@@ -39,14 +39,14 @@ public class Puzzle3x3Component : MonoBehaviour
 
     void ShowStop()
     {
-        foreach (GameObject answer in answers)
+        foreach (Transform answer in pieceCheckComponent.answers)
         {
-            answer.SetActive(false);
+            answer.gameObject.SetActive(false);
         }
 
-        foreach (GameObject piece in pieces)
+        foreach (PuzzlePiece piece in pieceCheckComponent.pieces)
         {
-            piece.SetActive(true);
+            piece.gameObject.SetActive(true);
         }
     }
 
