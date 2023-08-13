@@ -7,7 +7,7 @@ public class RushMonster : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float rushRange = 5f;
+    public float rushRange = 20f;
     public float rushSpeed = 10f;
     public float rushCoolTimer = 0f;
 
@@ -28,6 +28,7 @@ public class RushMonster : MonoBehaviour
         animator = GetComponent<Animator>();
         EnemyRigid = GetComponent<Rigidbody2D>();
         originPos = EnemyRigid.position;
+        monster.originPos = transform.position;
     }
 
     // Update is called once per frame
