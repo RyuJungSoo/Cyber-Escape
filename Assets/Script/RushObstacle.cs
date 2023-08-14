@@ -7,9 +7,9 @@ public class RushObstacle : MonoBehaviour
     // Start is called before the first frame update
 
 
-    bool isEven = true;
     float childTimer = 0;
     int index = 0;
+    bool isActive = false;
     void Start()
     {
        
@@ -22,50 +22,29 @@ public class RushObstacle : MonoBehaviour
 
         if (childTimer >= 2.0f)
         {
-            for (int i = 0; i < 10; i++)
+            int randomInt = Random.Range(0, 2);
+            for (int i = 0; i < 6; i++)
             {
-                if (isEven)
-                {
-                    if (i % 2 == 0)
-                    {
-                        transform.GetChild(i).gameObject.GetComponent<RushObstacleFadeOut>().fadeOut = true;
-                        //Debug.Log(i);
-                    }
-
-                    if (childTimer >= 4)
-                    {
-
-                        for (int j = 0; j < 10; j++)
-                        {
-                             transform.GetChild(j).gameObject.SetActive(true);
-                        }
-
-                        childTimer = 0;
-                        isEven = !isEven;
-                    }
-                }
-
-                else
-                {
-                    if (i % 2 == 1)
+                    if (i % 2 == randomInt)
                     {
                         transform.GetChild(i).gameObject.GetComponent<RushObstacleFadeOut>().fadeOut = true;
                     }
 
-                    if (childTimer >= 4)
-                    {
-                        for (int j = 0; j < 10; j++)
-                        {
-                          
-                              transform.GetChild(j).gameObject.SetActive(true);
-                        }
-
-                        childTimer = 0;
-                        isEven = !isEven;
-                    }
-                }
-
+                isActive = true;
             }
+
+            childTimer = 0;
+        }
+
+        if (isActive && childTimer >= 1)
+        {
+            for (int i =0; i < 6; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            isActive = false;
+
         }
     }
 }
