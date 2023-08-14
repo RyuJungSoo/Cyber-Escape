@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -128,6 +129,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalk", false);
         }
 
+        if (transform.position.x >= 272f)
+        {
+            SceneManager.LoadScene("EndingScene");
+        }
 
         // 대쉬 (이동 중에 F키) (쿨타임 2초)                                      
         if (Input.GetKeyDown(KeyCode.F) && (key != 0.0f) && isGround && dashTimer <= 0.0f)
