@@ -19,7 +19,7 @@ public class RushObstacleFadeOut : MonoBehaviour
     void Update()
     {
         if (fadeOut)
-        renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime / 2);
+            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime / 2);
 
         if (renderer.color.a < 0)
         {

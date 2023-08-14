@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletGenerator : MonoBehaviour
 {
     public GameObject BulletPrefab;
-    float span = 2.0f;
+    float span = 3.0f;
     float delta = 0;
 
     // Start is called before the first frame update
@@ -22,8 +22,8 @@ public class BulletGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(BulletPrefab);
-            int px = Random.Range(112, 117);
-            go.transform.position = new Vector3(px, 3, -1);      
+            int px = Random.Range(232, 250);
+            go.transform.position = new Vector3(px, 6, -1);      
         }
     }
 }
