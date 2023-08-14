@@ -419,7 +419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cam: {fileID: 0}
   Target: {x: 0, y: 0, z: -10}
-  Speed: 0.001
+  Speed: 0.00075
 --- !u!4 &1617228973
 Transform:
   m_ObjectHideFlags: 0
