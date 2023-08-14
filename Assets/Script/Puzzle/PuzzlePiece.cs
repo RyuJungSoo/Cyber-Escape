@@ -43,7 +43,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 
             
-            if (Mathf.Abs(Mathf.Round(transform.eulerAngles.z)) % okAngle == 0 || transform.rotation == piecePos.transform.rotation)
+            if ((Mathf.Abs(Mathf.Round(transform.eulerAngles.z)) != 0 && Mathf.Abs(Mathf.Round(transform.eulerAngles.z)) % okAngle == 0) || transform.eulerAngles.z == piecePos.transform.eulerAngles.z)
             {
 
                 transform.SetParent(piecePos.transform);

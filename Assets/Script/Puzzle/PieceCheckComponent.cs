@@ -10,7 +10,7 @@ public class PieceCheckComponent : MonoBehaviour
     public GameObject[] PuzzleType;
     public Transform[] answers;
     public PuzzlePiece[] pieces;
-    public Vector3[] PiecesOriginPos;
+    private Vector3[] PiecesOriginPos;
     private int index;
     private int cnt = 0;
 
