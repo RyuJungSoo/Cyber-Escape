@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8445494296570332698}
   - component: {fileID: 8445494296570332699}
   - component: {fileID: 8445494296570332697}
+  - component: {fileID: 8749063509908324794}
   m_Layer: 0
   m_Name: StageDoor
   m_TagString: Untagged
@@ -129,3 +130,24 @@ MonoBehaviour:
   upSpeed: 3
   waitTimer: 1.5
   isCheck: 0
+  isSoundPlay: 0
+--- !u!95 &8749063509908324794
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445494296570332709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
