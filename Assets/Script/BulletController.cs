@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     GameObject Player;
+    public float bulletdamage = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class BulletController : MonoBehaviour
     {
         transform.Translate(0, -0.1f, 0);
 
-        if (transform.position.y < -27.5f)
+        if (transform.position.y < -5.75f)
         {
             // gameObject.SetActive(false);
             Destroy(gameObject);
@@ -35,7 +36,7 @@ public class BulletController : MonoBehaviour
 
         if (d < r1 + r2)
         {
-            GameManager.Instance.PlayerDamage(5f, false);
+            GameManager.Instance.PlayerDamage(bulletdamage, false);
 
             gameObject.SetActive(false);
         }

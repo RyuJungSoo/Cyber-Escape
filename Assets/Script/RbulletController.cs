@@ -5,6 +5,7 @@ using UnityEngine;
 public class RbulletController : MonoBehaviour
 {
     GameObject Player;
+    public float bulletdamage = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class RbulletController : MonoBehaviour
 
         if (d < r1 + r2)
         {
+            GameManager.Instance.PlayerDamage(bulletdamage, false);
             gameObject.SetActive(false);
         }
     }
