@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         yPos = Mathf.Clamp(yPos, -21f, 5f);
         xPos = Mathf.Clamp(xPos, -0.01f, 264.1f);
 
-        if (Player.transform.position.x <= 99.5f)
+        if (Player.transform.position.x <= 99.5f) // Player가 Stage2 이전에 있으면
             yPos = 0f;
         transform.position = new Vector3(xPos, yPos, transform.position.z);
     }
