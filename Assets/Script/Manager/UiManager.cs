@@ -11,6 +11,7 @@ public class UiManager : MonoBehaviour
     public Image BossHpBar;
     public Text HpText;
     public GameObject PauseUI;
+    public GameObject TutorialUI;
     
 
     private void Awake()
@@ -52,7 +53,6 @@ public class UiManager : MonoBehaviour
     public void BossUI_On()
     {
         BossUI.SetActive(true);
-        Time.timeScale = 0;
         StartCoroutine("BossUI_Setting");
     }
 
@@ -75,6 +75,22 @@ public class UiManager : MonoBehaviour
 
         Time.timeScale = 1;
         PauseUI.SetActive(false);
+    }
+
+    public void TutorialUI_On()
+    {
+
+        Time.timeScale = 0;
+        TutorialUI.SetActive(true);
+
+    }
+
+    public void TutorialUI_Off()
+    {
+
+        Time.timeScale = 1;
+        TutorialUI.SetActive(false);
+
     }
 
     IEnumerator BossUI_Setting()

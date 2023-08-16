@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     SpriteRenderer renderer;
+    SpriteRenderer BossRenderer;
     public static GameManager Instance = null; // 어디서든 접근할 수 있도록 인스턴스 선언
     [SerializeField]private int Stage = 0;
     public Vector2[] Stage_Pos;
@@ -36,8 +37,16 @@ public class GameManager : MonoBehaviour
         playerController = Player.GetComponent<PlayerController>();
         hitObject = Player.GetComponent<HitObject>();
         renderer = Player.GetComponent<SpriteRenderer>();
+        BossRenderer = Boss.GetComponent<SpriteRenderer>();
         UiManager.Instance.HpUI_Update();
     }
+
+    public void Boss_On()
+    {
+        Boss.SetActive(true);
+        StartCoroutine("Boss_Setting");
+    }
+
 
     public float GetPlayerHp()
     {
@@ -108,5 +117,18 @@ public class GameManager : MonoBehaviour
         
         playerAudioSource.clip = bgms[index];
         playerAudioSource.Play();
+    }
+
+    IEnumerator Boss_Setting()
+    {
+        Time.timeScale = 0;
+        while (BossRenderer.color.a < 1)
+        {
+            BossRenderer.color = new Color(BossRenderer.color.r, BossRenderer.color.g, BossRenderer.color.b, BossRenderer.color.a + Time.unscaledDeltaTime);
+            yield return null;
+        }
+        Boss.GetComponent<HitObject>().originColor = BossRenderer.color;
+        UiManager.Instance.BossUI_On();
+
     }
 }
