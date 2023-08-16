@@ -13,6 +13,7 @@ public class MonsterComponent : MonoBehaviour
     public float speed = 5; // 스피드
     public float moveRange = 2; // 좌우 이동 거리
     public bool isWalk = true;
+    public bool isBoss; // 보스 유무
 
     public Vector2 direction = new Vector2(-1, 0);
     public Vector3 originPos;
@@ -139,6 +140,15 @@ public class MonsterComponent : MonoBehaviour
     public void TakeDamage(float PlayerDamage)
     {
         Hp -= PlayerDamage;
+        if (isBoss)
+        {
+            
+            if (UiManager.Instance.BossHpBar.IsActive())
+            {
+                UiManager.Instance.BossUI_Update();
+            }
+        }
+
         if (Hp <= 0)
         {
             //this.gameObject.SetActive(false);

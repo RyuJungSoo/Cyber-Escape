@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     public static UiManager Instance = null; // 어디서든 접근할 수 있도록 인스턴스 선언
+    public GameObject BossUI;
     public Image HpBar;
+    public Image BossHpBar;
     public Text HpText;
     public GameObject PauseUI;
+    
 
     private void Awake()
     {
@@ -22,7 +25,10 @@ public class UiManager : MonoBehaviour
 
     }
 
-
+    private void FixedUpdate()
+    {
+        
+    }
 
 
     public void HpUI_Update()
@@ -35,11 +41,32 @@ public class UiManager : MonoBehaviour
         HpBar.fillAmount = Player_Hp / Player_MaxHp;
     }
 
+    public void BossUI_Update()
+    {
+        float Boss_MaxHp = GameManager.Instance.GetBossMaxHp();
+        float Boss_Hp = GameManager.Instance.GetBossHp();
+
+        BossHpBar.fillAmount = Boss_Hp / Boss_MaxHp;
+    }
+
+    public void BossUI_On()
+    {
+        BossUI.SetActive(true);
+        Time.timeScale = 0;
+        StartCoroutine("BossUI_Setting");
+    }
+
+    public void BossUI_Off()
+    {
+        BossUI.SetActive(false);
+    
+    }
+
     public void PauseUI_On()
     {
 
         Time.timeScale = 0;
-        PauseUI.active = true;
+        PauseUI.SetActive(true);
     
     }
 
@@ -47,6 +74,16 @@ public class UiManager : MonoBehaviour
     {
 
         Time.timeScale = 1;
-        PauseUI.active = false;
+        PauseUI.SetActive(false);
+    }
+
+    IEnumerator BossUI_Setting()
+    {
+        while (BossHpBar.fillAmount < 1)
+        {
+            BossHpBar.fillAmount += 0.3f*Time.unscaledDeltaTime;
+            yield return null;
+        }
+        Time.timeScale = 1;
     }
 }

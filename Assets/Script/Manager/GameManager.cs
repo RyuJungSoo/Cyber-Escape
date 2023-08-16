@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]private int Stage = 0;
     public Vector2[] Stage_Pos;
     public GameObject Player;
+    public GameObject Boss;
+    public AudioClip[] bgms;
     private PlayerController playerController;
+    public AudioSource playerAudioSource;
     private HitObject hitObject;
 
     public float Respawn_Time = 1f;
@@ -44,6 +47,16 @@ public class GameManager : MonoBehaviour
     public float GetPlayerMaxHp()
     {
         return playerController.MaxHp;
+    }
+
+    public float GetBossHp()
+    {
+        return Boss.GetComponent<MonsterComponent>().Hp;
+    }
+
+    public float GetBossMaxHp()
+    {
+        return Boss.GetComponent<MonsterComponent>().MaxHp;
     }
 
 
@@ -87,5 +100,13 @@ public class GameManager : MonoBehaviour
             hitObject.FadeOutStart();
 
         }
+    }
+
+
+    public void ChangeBGM(int index)
+    {
+        
+        playerAudioSource.clip = bgms[index];
+        playerAudioSource.Play();
     }
 }
