@@ -31,6 +31,7 @@ public class ElevatorController : MonoBehaviour
             if (transform.position.y <= downpos.position.y)
             {
                 iselevatordown = true;
+                GetComponent<AudioSource>().Play();
             }
         }
 
