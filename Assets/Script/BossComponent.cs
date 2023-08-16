@@ -46,8 +46,14 @@ public class BossComponent : MonoBehaviour
     Vector3 jumpStartPos;
     Vector3 targetPos;
 
+    private void Awake()
+    {
+        GameManager.Instance.ChangeBGM(1);
+
+    }
     void Start()
     {
+        UiManager.Instance.BossUI_On();
         animator = GetComponent<Animator>();
         orginPos = transform.position;
         player = GameObject.Find("Player");
