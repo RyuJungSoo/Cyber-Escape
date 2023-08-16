@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
     public bool isPuzzleSolving = false;
     public bool isDead = false;
 
+    private void Awake()
+    {
+        GameManager.Instance.ChangeBGM(0);
+    }
     void Start()
     {
         this.PlayerRigid = GetComponent<Rigidbody2D>();
@@ -56,8 +60,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPuzzleSolving) return;
-
+        if (isPuzzleSolving || Time.timeScale == 0)
+        {
+            if (audioSource.isPlaying == true)
+                audioSource.Stop();
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Z)) // АјАн
         {

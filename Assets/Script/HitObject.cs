@@ -8,7 +8,7 @@ public class HitObject : MonoBehaviour
     // Start is called before the first frame update
 
     SpriteRenderer renderer;
-    Color originColor;
+    public Color originColor;
     public bool isChange = false;
     public bool isPlayer = false;
     public bool isFadeOut = false;
