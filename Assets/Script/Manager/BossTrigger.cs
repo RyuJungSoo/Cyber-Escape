@@ -8,7 +8,7 @@ public class BossTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.ChangeBGM(2);
+            GameManager.Instance.ChangeBGM(1);
             GameManager.Instance.Boss_On();
             this.gameObject.SetActive(false);
         }

@@ -80,8 +80,6 @@ public class GameManager : MonoBehaviour
     public void NextStage()
     {
         Stage++;
-        if (Stage == 1)
-            ChangeBGM(1);
     }
 
     public void Respawn()
