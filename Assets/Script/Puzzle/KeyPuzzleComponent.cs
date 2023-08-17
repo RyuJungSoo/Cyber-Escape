@@ -122,7 +122,7 @@ public class KeyPuzzleComponent : MonoBehaviour
         audioSource.Play();
     }
 
-    private void Reset()
+    public void Reset()
     {
 
         PuzzleType[index].SetActive(false);

@@ -6,23 +6,38 @@ public class PuzzleRandomRespawn : MonoBehaviour
 {
     public GameObject Puzzle;
     public GameObject Player;
-    float currTime;   
+
+    public Transporter transporter;
+
+    float currTime;
+    float transporterStopTimer = 0;
+
+    public bool isSolve = false;
 
     // Update is called once per frame
     void Update()
     {
         if (Player.transform.position.x >= 230.5f && Player.transform.position.x <= 249f) //3스테이지 진입 후
         {
-            currTime += Time.deltaTime;
+            if(!GameManager.Instance.isBossPuzzleUION && transporter.Force > 0)
+                currTime += Time.deltaTime;
+
+            if (transporterStopTimer > 5f)
+            {
+                transporterStopTimer = 0;
+                transporter.TransporterStart();
+            }
 
             if (currTime > 5)                      //
             {
                 float newX = Random.Range(232f, 248f);
                 float newY = -5.8f;
-                GameObject puzzle = Instantiate(Puzzle);
-                puzzle.transform.position = new Vector3(newX, newY, 0);
 
+                Puzzle.transform.position = new Vector3(newX, newY, -1);
+                Puzzle.GetComponent<DoorButtonController>().Reset();
+                Puzzle.SetActive(true);
                 currTime = 0;
+                transporter.TransporterStop();
             }
         }
 

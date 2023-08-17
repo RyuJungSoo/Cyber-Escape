@@ -829,6 +829,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &22445082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7908918299245459804, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+  m_PrefabInstance: {fileID: 1240074482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &34199521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9953,6 +9958,9 @@ MonoBehaviour:
   Timer: {fileID: 841573193}
   Door: {fileID: 656994470}
   limitTime: 10
+  isBossDoorButton: 0
+  BossPuzzles: []
+  boss: {fileID: 0}
 --- !u!58 &423219930
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11741,6 +11749,7 @@ MonoBehaviour:
   Force: 12
   isStop: 0
   isReverse: 0
+  restartTimer: 0
 --- !u!212 &499445688
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13220,6 +13229,9 @@ MonoBehaviour:
   Timer: {fileID: 841573193}
   Door: {fileID: 1186862361}
   limitTime: 10
+  isBossDoorButton: 0
+  BossPuzzles: []
+  boss: {fileID: 0}
 --- !u!58 &590259238
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14768,6 +14780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 6580151828850109252, guid: 1fa1aacc0ab90d14888d7632d8e2cd7e, type: 3}
+  isShoot: 0
 --- !u!4 &674906964
 Transform:
   m_ObjectHideFlags: 0
@@ -19817,6 +19830,9 @@ MonoBehaviour:
   Timer: {fileID: 841573193}
   Door: {fileID: 212248582}
   limitTime: 10
+  isBossDoorButton: 0
+  BossPuzzles: []
+  boss: {fileID: 0}
 --- !u!58 &787659019
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -21082,6 +21098,7 @@ MonoBehaviour:
   bgms:
   - {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
   - {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
+  isBossPuzzleUION: 0
   playerAudioSource: {fileID: 982626950}
   Respawn_Time: 1
 --- !u!1 &834723727
@@ -21344,9 +21361,11 @@ MonoBehaviour:
   sec: 0
   isTimeOver: 0
   timerStop: 1
+  isBossStage: 0
   audioClips:
   - {fileID: 8300000, guid: e6528cbb36840d4439ed7d868d37ac3f, type: 3}
   - {fileID: 8300000, guid: d9ca61c0a35aeb348bd6f9143803c6f2, type: 3}
+  transporter: {fileID: 499445686}
 --- !u!114 &841573195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22364,8 +22383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d389540fe2f6ed4449a8491814d79fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puzzle: {fileID: 0}
+  Puzzle: {fileID: 22445082}
   Player: {fileID: 2103045969}
+  transporter: {fileID: 499445686}
+  isSolve: 0
 --- !u!4 &916275506
 Transform:
   m_ObjectHideFlags: 0
@@ -23712,6 +23733,7 @@ MonoBehaviour:
   jumpSpeed: 5
   rushObstacles: {fileID: 1114649511}
   transporters: {fileID: 499445684}
+  bulletGenerator: {fileID: 674906963}
 --- !u!114 &995256609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25798,7 +25820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114649511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28369,6 +28391,95 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.6, y: 4}
   m_EdgeRadius: 0
+--- !u!1001 &1240074482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: Timer
+      value: 
+      objectReference: {fileID: 841573193}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: PuzzleUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: isBossDoorButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: BossPuzzles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: BossPuzzles.Array.data[0]
+      value: 
+      objectReference: {fileID: 734036269}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: BossPuzzles.Array.data[1]
+      value: 
+      objectReference: {fileID: 429957559}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: BossPuzzles.Array.data[2]
+      value: 
+      objectReference: {fileID: 1896529277}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459802, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459804, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_Name
+      value: DoorButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459804, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
 --- !u!1 &1240177622
 GameObject:
   m_ObjectHideFlags: 0
@@ -89110,6 +89221,7 @@ GameObject:
   - component: {fileID: 2103045977}
   - component: {fileID: 2103045976}
   - component: {fileID: 2103045978}
+  - component: {fileID: 2103045979}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -89203,7 +89315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 233.18, y: -3.18, z: 0}
+  m_LocalPosition: {x: 232.67, y: -4.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -89396,6 +89508,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &2103045979
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103045969}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.042168677, y: 0.70594406}
+  serializedVersion: 2
+  m_Radius: 0.6088388
 --- !u!1 &2104038925
 GameObject:
   m_ObjectHideFlags: 0

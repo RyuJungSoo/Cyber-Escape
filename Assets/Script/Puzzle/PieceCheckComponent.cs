@@ -77,7 +77,7 @@ public class PieceCheckComponent : MonoBehaviour
             cnt = 0;
     }
 
-    private void Reset()
+    public void Reset()
     {
         foreach (PuzzlePiece piece in pieces)
             piece.gameObject.transform.SetParent(piece.gameObject.transform.parent.transform.parent);
