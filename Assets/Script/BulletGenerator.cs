@@ -8,12 +8,10 @@ public class BulletGenerator : MonoBehaviour
     float span = 3.0f;
     float delta = 0;
 
-    GameObject Player;
-
     // Start is called before the first frame update
     void Start()
     {
-        this.Player = GameObject.Find("Player");
+        
     }
 
     // Update is called once per frame
@@ -23,13 +21,9 @@ public class BulletGenerator : MonoBehaviour
         if (this.delta > this.span)
         {
             this.delta = 0;
-            if (this.Player.transform.position.x > 230f)
-            {
-                GameObject go = Instantiate(BulletPrefab);
-                GetComponent<AudioSource>().Play();
-                int px = Random.Range(232, 250);
-                go.transform.position = new Vector3(px, 6, -1);
-            }
+            GameObject go = Instantiate(BulletPrefab);
+            int px = Random.Range(232, 250);
+            go.transform.position = new Vector3(px, 6, -1);      
         }
     }
 }
