@@ -100,7 +100,11 @@ public class DoorButtonController : MonoBehaviour
             PuzzleUI = BossPuzzles[randomIdx];
 
             if (randomIdx > 0)
+            {
+                
                 PuzzleUI.transform.GetChild(0).GetComponent<PieceCheckComponent>().Reset();
+                
+            }
 
             isAlreadyTimerSetting = false;
         }
