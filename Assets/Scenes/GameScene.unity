@@ -14122,7 +14122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639675154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.33, y: -9.56, z: 0.71882015}
+  m_LocalPosition: {x: 54.78, y: -9.56, z: 0.71882015}
   m_LocalScale: {x: 1, y: 6.575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21080,6 +21080,7 @@ MonoBehaviour:
   Player: {fileID: 2103045969}
   Boss: {fileID: 995256600}
   bgms:
+  - {fileID: 8300000, guid: 93161f8b7dba8f04ca8847747dcccc93, type: 3}
   - {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
   - {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
   playerAudioSource: {fileID: 982626950}
@@ -89203,7 +89204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 233.18, y: -3.18, z: 0}
+  m_LocalPosition: {x: 230.55, y: -3.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
