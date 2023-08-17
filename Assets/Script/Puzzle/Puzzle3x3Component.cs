@@ -10,18 +10,12 @@ public class Puzzle3x3Component : MonoBehaviour
     private int index;
     IEnumerator myCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void ShowStart()
     {
-        
+        Debug.Log("Show");
         myCoroutine = ShowAnswers(Interval_Time);
         StartCoroutine(myCoroutine);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator ShowAnswers(float time)
@@ -30,6 +24,7 @@ public class Puzzle3x3Component : MonoBehaviour
         int index = 0;
         while (index < pieceCheckComponent.answers.Length)
         {
+
             yield return new WaitForSeconds(time);
             pieceCheckComponent.answers[index].gameObject.SetActive(true);
             index++;

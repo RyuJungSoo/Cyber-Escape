@@ -17,28 +17,9 @@ public class KeyPuzzleComponent : MonoBehaviour
     private int Correct_cnt = 0;
     private AudioSource audioSource;
 
-    private void Awake()
+    private void OnEnable()
     {
-        // 문제를 푼 이력이 있는 경우 리셋
-        if (gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved == true || gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed == true)
-        {
-            Reset();
-        }
-
-        // 퍼즐 유형 중 하나 가져오기
-        index = Random.Range(0, PuzzleType.Length);
-        PuzzleType[index].SetActive(true);
-
-        // 답 가져오기
-        GameObject output = PuzzleType[index].transform.GetChild(1).gameObject;
-        KeyImgs = output.transform.GetComponentsInChildren<Transform>().Where(child => child != output.transform).ToArray();
-
-
-        foreach (Transform KeyImg in KeyImgs)
-            KeyImg.gameObject.SetActive(false);
-
-        // 답 갯수 저장
-        Answer_cnt = KeyImgs.Length;
+        PuzzleSetting();
     }
 
     private void Start()
@@ -124,9 +105,34 @@ public class KeyPuzzleComponent : MonoBehaviour
 
     public void Reset()
     {
-
+        Correct_cnt = 0;
         PuzzleType[index].SetActive(false);
         gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
         gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = false;
+    }
+
+    public void PuzzleSetting()
+    {
+        // 문제를 푼 이력이 있는 경우 리셋
+        if (gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved == true || gameObject.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed == true)
+        {
+            Reset();
+        }
+
+        // 퍼즐 유형 중 하나 가져오기
+        index = Random.Range(0, PuzzleType.Length);
+        PuzzleType[index].SetActive(true);
+
+        // 답 가져오기
+        GameObject output = PuzzleType[index].transform.GetChild(1).gameObject;
+        KeyImgs = output.transform.GetComponentsInChildren<Transform>().Where(child => child != output.transform).ToArray();
+
+
+        foreach (Transform KeyImg in KeyImgs)
+            KeyImg.gameObject.SetActive(false);
+
+        // 답 갯수 저장
+        Answer_cnt = KeyImgs.Length;
+
     }
 }

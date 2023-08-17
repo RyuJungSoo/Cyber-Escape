@@ -35,7 +35,7 @@ public class Transporter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isStop)
+        if (isStop || Time.timeScale == 0)
             return;
 
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Obstacle"))
@@ -88,19 +88,21 @@ public class Transporter : MonoBehaviour
             }
         }
 
-        else if (isReverse == true)
+        else if (isReverse == true && isStop == false)
         {
             Animator[] animators = transform.GetComponentsInChildren<Animator>();
             foreach (Animator animator in animators)
             {
+                animator.speed = 1;
                 animator.SetFloat("Reverse", -1);
             }
         }
-        else if (isReverse == false)
+        else if (isReverse == false && isStop == false)
         {
             Animator[] animators = transform.GetComponentsInChildren<Animator>();
             foreach (Animator animator in animators)
             {
+                animator.speed = 1;
                 animator.SetFloat("Reverse", 1);
             }
 
