@@ -220,7 +220,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Laser")
         {
-            OnDamaged(collision.transform.position, true,3);
+            if (Hp > 0)
+                OnDamaged(collision.transform.position, true,3);
         }
     }
 

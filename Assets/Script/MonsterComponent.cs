@@ -62,6 +62,10 @@ public class MonsterComponent : MonoBehaviour
             if (collision.gameObject.GetComponent<PlayerController>().isDead == true)
                 return;
 
+            if (collision.gameObject.GetComponent<PlayerController>().Hp <= 0)
+                return;
+
+
             GameManager.Instance.PlayerDamage(damage , true);
         }
 
@@ -117,6 +121,9 @@ public class MonsterComponent : MonoBehaviour
             {
                 if (hit.gameObject.GetComponent<PlayerController>().isDead == true)
                     return;
+
+                if (hit.gameObject.GetComponent<PlayerController>().Hp <= 0) return;
+
                 if (hit.gameObject.transform.position.x > transform.position.x)
                     transform.localScale = new Vector2(1, transform.localScale.y);
                 else

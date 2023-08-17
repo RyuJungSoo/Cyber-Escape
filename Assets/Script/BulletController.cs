@@ -34,7 +34,7 @@ public class BulletController : MonoBehaviour
         float r1 = 0.3f;
         float r2 = 1.0f;
 
-        if (d < r1 + r2)
+        if (d < r1 + r2 && Player.GetComponent<PlayerController>().Hp > 0)
         {
             GameManager.Instance.PlayerDamage(bulletdamage, false);
 

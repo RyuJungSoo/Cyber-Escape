@@ -12104,8 +12104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498b8a0844293f42ad47bbf5825ee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 2103045972}
-  Speed: 3
+  Player: {fileID: 2103045969}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21077,6 +21076,7 @@ MonoBehaviour:
   - {x: 46.47, y: -1.013}
   - {x: 99.89, y: -1.013}
   - {x: 166.9, y: -15}
+  - {x: 225.03, y: -4.85}
   Player: {fileID: 2103045969}
   Boss: {fileID: 995256600}
   bgms:
@@ -89203,7 +89203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 233.18, y: -3.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

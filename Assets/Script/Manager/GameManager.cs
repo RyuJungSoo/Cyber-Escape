@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
         BossRenderer = Boss.GetComponent<SpriteRenderer>();
         UiManager.Instance.HpUI_Update();
     }
+    public void Update()
+    {
+        for (int i = 0; i < Stage_Pos.Length; i++)
+        {
+            if (Player.transform.position.x >= Stage_Pos[i].x)
+                GameManager.Instance.Stage = i;
+        }
+    }
 
     public void Boss_On()
     {
