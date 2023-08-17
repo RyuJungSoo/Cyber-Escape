@@ -24,6 +24,7 @@ public class BulletGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(BulletPrefab);
+            GetComponent<AudioSource>().Play();
             int px = Random.Range(232, 250);
             go.transform.position = new Vector3(px, 6, -1);      
         }
