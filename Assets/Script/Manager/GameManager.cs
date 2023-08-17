@@ -7,11 +7,14 @@ public class GameManager : MonoBehaviour
     SpriteRenderer renderer;
     SpriteRenderer BossRenderer;
     public static GameManager Instance = null; // 어디서든 접근할 수 있도록 인스턴스 선언
-    [SerializeField]private int Stage = 0;
+    public int Stage = 0;
     public Vector2[] Stage_Pos;
     public GameObject Player;
     public GameObject Boss;
     public AudioClip[] bgms;
+
+    public bool isBossPuzzleUION = false;
+
     private PlayerController playerController;
     public AudioSource playerAudioSource;
     private HitObject hitObject;

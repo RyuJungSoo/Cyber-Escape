@@ -31,7 +31,7 @@ public class RushObstacleFadeOut : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        if (player.transform.position.y < -5)
+        if (player.transform.position.y < -4.4)
             collider2D.isTrigger = true;
         else
             collider2D.isTrigger = false;

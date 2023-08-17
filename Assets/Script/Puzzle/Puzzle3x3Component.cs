@@ -25,9 +25,9 @@ public class Puzzle3x3Component : MonoBehaviour
     }
 
     IEnumerator ShowAnswers(float time)
+
     {
         int index = 0;
-
         while (index < pieceCheckComponent.answers.Length)
         {
             yield return new WaitForSeconds(time);

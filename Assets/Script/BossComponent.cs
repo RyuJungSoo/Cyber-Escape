@@ -47,6 +47,8 @@ public class BossComponent : MonoBehaviour
     Vector3 jumpStartPos;
     Vector3 targetPos;
 
+    public BulletGenerator bulletGenerator;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -57,7 +59,11 @@ public class BossComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.isBossPuzzleUION) return;
+
         if (player.transform.position.x < 230) return;
+
+        bulletGenerator.isShoot = isReady;
 
         if (isReady)
         {
@@ -66,7 +72,7 @@ public class BossComponent : MonoBehaviour
 
         if (attackTimer < 4f && changeBeltDirection)
         {
-            transporters.GetComponent<Transporter>().isReverse = !transporters.GetComponent<Transporter>().isReverse;
+            transporters.GetComponent<Transporter>().TransporterReverse();
             changeBeltDirection = false;
         }
 
@@ -164,7 +170,6 @@ public class BossComponent : MonoBehaviour
                 rushObstacles.SetActive(false);
                 firstSetting = false;
                 changeBeltDirection = true;
-
                 rushCnt = 0;
             }
         }
@@ -210,6 +215,8 @@ public class BossComponent : MonoBehaviour
                 attackPattern = 0;
                 isReady = true;
                 changeBeltDirection = true;
+                animator.SetBool("isJump", false);
+
                 jumpCnt = 0;
             }
         }
@@ -219,6 +226,8 @@ public class BossComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (GameManager.Instance.isBossPuzzleUION) return;
+
             if (collision.gameObject.layer != 8 && collision.GetComponent<PlayerController>().Hp > 0)
                 GameManager.Instance.PlayerDamage(rushDamage, true);
         }
@@ -228,6 +237,8 @@ public class BossComponent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (GameManager.Instance.isBossPuzzleUION) return;
+
             if (collision.gameObject.layer != 8 && collision.GetComponent<PlayerController>().Hp > 0)
                 GameManager.Instance.PlayerDamage(rushDamage, true);
         }

@@ -2,6 +2,7 @@ using EnumSpace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 
@@ -19,11 +20,14 @@ public class TimerController : MonoBehaviour
 
     public bool isTimeOver = false;
     public bool timerStop = true;
+    public bool isBossStage = false;
 
     float overSoundTimer = 0.0f;
 
     AudioSource audioSource;
     public AudioClip[] audioClips;
+
+    public Transporter transporter;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,9 @@ public class TimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.Stage == 4)
+            isBossStage = true;
+
         if (timerStop) return;
 
         if (!audioSource.isPlaying)
@@ -63,6 +70,14 @@ public class TimerController : MonoBehaviour
             doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = false;
             audioSource.Stop();
             SoundManager.Instance.AudioPlay(SoundType.PUZZLECORRECT);
+
+            if (isBossStage)
+            {
+                transporter.TransporterStop();
+                GameManager.Instance.isBossPuzzleUION = false;
+                doorButton.SetActive(false);
+            }
+
             gameObject.SetActive(false); 
         }
 
@@ -78,19 +93,27 @@ public class TimerController : MonoBehaviour
             //문 열리는 애니메이션 재생
                 SoundManager.Instance.AudioPlay(SoundType.DOOROPEN);
 
+            if (!isBossStage)
+            {
                 doorButton.GetComponent<DoorButtonController>().Door.GetComponent<Animator>().SetBool("isDoorOpen", true);
-                doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
-                doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = true;
-                //몬스터 스폰 시작
                 doorButton.GetComponent<DoorButtonController>().Door.GetComponent<MonsterSpawnComponent>().isStartSpawn = true;
-
-
-                //퍼즐 UI 숨기기
-                doorButton.GetComponent<DoorButtonController>().PuzzleUI.SetActive(false);
-                isTimeOver = true;
-                timerStop = true;
-                player.GetComponent<PlayerController>().isPuzzleSolving = false;
-                gameObject.SetActive(false);
+            }
+            else
+            {
+                transporter.TransporterStart();
+                GameManager.Instance.isBossPuzzleUION = false;
+                doorButton.SetActive(false);
+            }
+           
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = true;
+            
+            //퍼즐 UI 숨기기
+            doorButton.GetComponent<DoorButtonController>().PuzzleUI.SetActive(false);
+            isTimeOver = true;
+            timerStop = true;
+            player.GetComponent<PlayerController>().isPuzzleSolving = false;
+            gameObject.SetActive(false);
         }
         
         //UI 텍스트 설정

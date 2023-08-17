@@ -5,8 +5,10 @@ using UnityEngine;
 public class BulletGenerator : MonoBehaviour
 {
     public GameObject BulletPrefab;
-    float span = 3.0f;
+    float span = 1f;
     float delta = 0;
+
+    public bool isShoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class BulletGenerator : MonoBehaviour
     void Update()
     {
         this.delta += Time.deltaTime;
-        if (this.delta > this.span)
+        if (this.delta > this.span && isShoot)
         {
             this.delta = 0;
             GameObject go = Instantiate(BulletPrefab);

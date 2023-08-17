@@ -9,6 +9,8 @@ public class Transporter : MonoBehaviour
     public bool isReverse;
     private SpriteRenderer spriteRenderer;
 
+    public float restartTimer = 0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,19 @@ public class Transporter : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         Settings();
+    }
+
+    private void Update()
+    {
+        if (isStop)
+        {
+            restartTimer += Time.deltaTime;
+            if (restartTimer >= 10)
+            {
+                TransporterStart();
+                restartTimer = 0;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,7 +77,7 @@ public class Transporter : MonoBehaviour
         }
     }
 
-    private void Settings() // 정지, 재생, 역재생 애니메이션 세팅
+    public void Settings() // 정지, 재생, 역재생 애니메이션 세팅
     {
         if (isStop == true)
         {
@@ -99,5 +114,25 @@ public class Transporter : MonoBehaviour
                 animator.speed = 1;
             }
         }
+    }
+
+    public void TransporterStop()
+    {
+        Force = 0;
+        isStop = true;
+        Settings();
+    }
+
+    public void TransporterStart()
+    {
+        Force = 12;
+        isStop = false;
+        Settings();
+    }
+
+    public void TransporterReverse()
+    {
+        isReverse = !isReverse;
+        Settings();
     }
 }
