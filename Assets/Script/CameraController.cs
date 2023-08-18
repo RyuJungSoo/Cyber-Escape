@@ -187,7 +187,7 @@ public class CameraController : MonoBehaviour
         if (Target.transform.position.x >= 230.5f && Target.transform.position.x < 250f)
         {
             state = Stage.Boss;
-            transform.position = new Vector3(240.5f, -1f, -12f);
+            transform.position = new Vector3(240.5f, -3.7f, -12f);
             Debug.Log("보스 스테이지 들어옴");
         }
 
