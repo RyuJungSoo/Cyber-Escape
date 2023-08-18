@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Boss_Setting()
     {
-        Time.timeScale = 0;
+        
         while (BossRenderer.color.a < 1)
         {
             BossRenderer.color = new Color(BossRenderer.color.r, BossRenderer.color.g, BossRenderer.color.b, BossRenderer.color.a + Time.unscaledDeltaTime);

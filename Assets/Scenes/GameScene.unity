@@ -12113,7 +12113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498b8a0844293f42ad47bbf5825ee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2103045969}
+  smoothTime: 0.2
+  Speed: 0
+  cam: {fileID: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14134,7 +14136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639675154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.55, y: -9.56, z: 0.71882015}
+  m_LocalPosition: {x: 56.96, y: -9.56, z: 0.71882015}
   m_LocalScale: {x: 1, y: 6.575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21196,6 +21198,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 33a0c5543daf2634ba4d75b26b8935a2, type: 3}
   - {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
   - {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
+  - {fileID: 8300000, guid: c6b15df035ec5954ead12390f8efde53, type: 3}
   isBossPuzzleUION: 0
   playerAudioSource: {fileID: 982626950}
   Respawn_Time: 1
@@ -23805,7 +23808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995256600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.15, y: -5.09, z: -1}
+  m_LocalPosition: {x: 245.43, y: -5.09, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
