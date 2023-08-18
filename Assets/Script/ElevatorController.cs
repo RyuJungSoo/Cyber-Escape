@@ -9,6 +9,8 @@ public class ElevatorController : MonoBehaviour
     public Transform downpos;
     public Transform upperpos;
 
+    public bool isSwitch;
+
     public float speed;
     bool iselevatordown;
 
@@ -20,15 +22,14 @@ public class ElevatorController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-
         StartElevator();
     }
 
     void StartElevator()
     {
-        if (Vector2.Distance(player.position, elevatorswitch.position) < 1.5f && Input.GetKeyDown("e"))
+        if (isSwitch && Input.GetKeyDown("e"))
         {
             if (transform.position.y == downpos.position.y)
             {
@@ -55,6 +56,21 @@ public class ElevatorController : MonoBehaviour
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, downpos.position, speed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isSwitch = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isSwitch = false;
         }
     }
 }
