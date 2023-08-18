@@ -16,28 +16,45 @@ public class ElevatorController : MonoBehaviour
     void Start()
     {
         iselevatordown = false;
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+
         StartElevator();
     }
 
     void StartElevator()
     {
-        if(Vector2.Distance(player.position, elevatorswitch.position) < 0.5f)
+        if (Vector2.Distance(player.position, elevatorswitch.position) < 1.5f && Input.GetKeyDown("e"))
         {
-            if (transform.position.y <= downpos.position.y)
+            if (transform.position.y == downpos.position.y)
             {
                 iselevatordown = true;
                 GetComponent<AudioSource>().Play();
             }
+            
+            else if (transform.position.y == upperpos.position.y)
+            {
+                iselevatordown = false;
+                GetComponent<AudioSource>().Play();
+            }
+            
+        }
+        else if (Vector2.Distance(player.position, elevatorswitch.position) > 5.0f)
+        {
+            iselevatordown = false;
         }
 
         if (iselevatordown)
         {
             transform.position = Vector2.MoveTowards(transform.position, upperpos.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, downpos.position, speed * Time.deltaTime);
         }
     }
 }
