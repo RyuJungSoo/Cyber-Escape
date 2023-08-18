@@ -13,8 +13,8 @@ public class PressComponent : MonoBehaviour
     public float downSpeed = 3.0f;
     public float upSpeed = 2.0f;
     public bool isDown = true;
-
-
+    public bool isRedPress = false;
+    Animator animator;
 
     void Start()
     {
@@ -30,8 +30,10 @@ public class PressComponent : MonoBehaviour
         if (isDown)
         {
             transform.position += new Vector3(0, -1) * downSpeed * Time.deltaTime;
-           
+            if(isRedPress == true)
+            {
 
+            }
         }
         else
         {
