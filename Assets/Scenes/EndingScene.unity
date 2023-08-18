@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To Freedom...
+  m_text: Towards Freedom...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 136778ed9a7c6bb4aba9ebafc4fed6ed, type: 2}
   m_sharedMaterial: {fileID: 5730739905648202216, guid: 136778ed9a7c6bb4aba9ebafc4fed6ed, type: 2}
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -245.19678, y: 0, z: -242.01245, w: 0}
+  m_margin: {x: -345.95605, y: 0, z: -342.77173, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

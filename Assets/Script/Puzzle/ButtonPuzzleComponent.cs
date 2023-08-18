@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ButtonPuzzleComponent : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ButtonPuzzleComponent : MonoBehaviour
     public float LimitTime;
     public Sprite idle_img;
     public Sprite push_img;
+    public TMP_Text LeftNum;
 
     AudioSource audioSource;
     public AudioClip audioClip;
@@ -24,6 +26,7 @@ public class ButtonPuzzleComponent : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         puzzleCompononent = transform.parent.gameObject.GetComponent<PuzzleCompononent>();
         puzzleUI = transform.parent.gameObject.transform.parent.gameObject;
+        LeftNum.text = ClickCnt.ToString();
     }
 
     // Update is called once per frame
@@ -54,7 +57,7 @@ public class ButtonPuzzleComponent : MonoBehaviour
         }
 
         audioSource.PlayOneShot(audioClip);
-
+        LeftNum.text = (ClickCnt - Cur_ClickCnt).ToString();
     }
 
     public void ButtonUp()
