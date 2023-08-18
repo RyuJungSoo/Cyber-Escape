@@ -14148,6 +14148,7 @@ GameObject:
   - component: {fileID: 597992058}
   - component: {fileID: 597992057}
   - component: {fileID: 597992056}
+  - component: {fileID: 597992059}
   m_Layer: 3
   m_Name: Elevator
   m_TagString: Untagged
@@ -14187,6 +14188,7 @@ MonoBehaviour:
   elevatorswitch: {fileID: 584677156}
   downpos: {fileID: 1898323803}
   upperpos: {fileID: 1117877293}
+  isSwitch: 0
   speed: 2
 --- !u!61 &597992057
 BoxCollider2D:
@@ -14266,6 +14268,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &597992059
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597992054}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.25
 --- !u!1 &599621468
 GameObject:
   m_ObjectHideFlags: 0
@@ -27226,6 +27244,7 @@ GameObject:
   - component: {fileID: 1135139989}
   - component: {fileID: 1135139992}
   - component: {fileID: 1135139993}
+  - component: {fileID: 1135139994}
   m_Layer: 3
   m_Name: Elevator
   m_TagString: Untagged
@@ -27343,6 +27362,7 @@ MonoBehaviour:
   elevatorswitch: {fileID: 462403902}
   downpos: {fileID: 1749913025}
   upperpos: {fileID: 2035042429}
+  isSwitch: 0
   speed: 2
 --- !u!82 &1135139993
 AudioSource:
@@ -27440,6 +27460,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &1135139994
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135139988}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.25
 --- !u!1 &1141447848
 GameObject:
   m_ObjectHideFlags: 0
@@ -92428,7 +92464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: -1, z: 0}
+  m_LocalPosition: {x: 171.25, y: -13.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
