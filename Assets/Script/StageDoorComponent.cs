@@ -21,7 +21,7 @@ public class StageDoorComponent : MonoBehaviour
     float maxY;
     void Start()
     {
-        maxY = transform.position.y + 3.6f;
+        maxY = transform.position.y + 2.1f;
         Boss = GameObject.Find("Boss");
     }
 

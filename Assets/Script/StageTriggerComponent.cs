@@ -58,7 +58,9 @@ public class StageTriggerComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(isFirstStage)
-            GameManager.Instance.ChangeBGM(1);
+            GameManager.Instance.ChangeBGM(1); //Stage1 BGM
+        else
+            GameManager.Instance.ChangeBGM(6); //Stage2 BGM
         OriginPos = cam.transform.position;
         Time.timeScale = 0;
         cam.GetComponent<CameraController>().enabled = false;
