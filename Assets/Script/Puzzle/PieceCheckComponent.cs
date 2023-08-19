@@ -40,14 +40,35 @@ public class PieceCheckComponent : MonoBehaviour
 
     public void Reset()
     {
-        // 3x3 퍼즐의 경우 이전 퍼즐이 안 꺼진 경우 확인
-        if (is3x3)
-            if (PuzzleType[index].activeSelf == true)
+        //  이전 퍼즐이 안 꺼진 경우 초기화
+        //if (is3x3)
+        if (PuzzleType[index].activeSelf == true)
+        {
+            foreach (PuzzlePiece piece in pieces)
             {
-                PuzzleType[index].SetActive(false);
-                GetComponent<PuzzleCompononent>().isSolved = false;
-                GetComponent<PuzzleCompononent>().isFailed = false;
+                if (piece.gameObject.GetComponent<PuzzlePiece>().isSet == true)
+                    piece.gameObject.transform.SetParent(piece.gameObject.transform.parent.transform.parent);
+                piece.gameObject.GetComponent<PuzzlePiece>().isSet = false;
+
             }
+            if (is3x3)
+            {
+
+                foreach (Transform answer in answers)
+                    answer.gameObject.SetActive(true);
+            }
+
+            for (int i = 0; i < pieces.Length; i++)
+            {
+
+                pieces[i].gameObject.GetComponent<RectTransform>().anchoredPosition = PiecesOriginPos[i];
+
+            }
+
+            PuzzleType[index].SetActive(false);
+            GetComponent<PuzzleCompononent>().isSolved = false;
+            GetComponent<PuzzleCompononent>().isFailed = false;
+        }
 
         // 문제를 푼 이력이 없는 경우 return
         if (GetComponent<PuzzleCompononent>().isSolved != true && GetComponent<PuzzleCompononent>().isFailed != true)

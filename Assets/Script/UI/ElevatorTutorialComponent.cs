@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialComponent : MonoBehaviour
+public class ElevatorTutorialComponent : MonoBehaviour
 {
-
     private void Update()
     {
-        if (UiManager.Instance.TutorialUI.activeSelf == true)
+        if (UiManager.Instance.ElevatorTutorialUI.activeSelf == true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                UiManager.Instance.TutorialUI_Off();
+                UiManager.Instance.ElevatorTutorialUI_Off();
                 this.gameObject.SetActive(false);
             }
         }
@@ -20,6 +19,6 @@ public class TutorialComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            UiManager.Instance.TutorialUI_On();
+            UiManager.Instance.ElevatorTutorialUI_On();
     }
 }

@@ -39,10 +39,10 @@ public class SpikeTrapComponent : MonoBehaviour
             //바꾸는 줄
             renderer.sprite = spikeTrapSprites[length];
 
-            if (length == 0 && Mathf.Abs(transform.position.x - Player.transform.position.x) < 2)
+            /*if (length == 0 && Mathf.Abs(transform.position.x - Player.transform.position.x) < 2)
             {
                 SoundManager.Instance.AudioPlay(EnumSpace.SoundType.SPIKETRAP);
-            }
+            }*/
 
             //콜라이더 사이즈를 sprite 사이즈만큼 늘림
             boxCollider.size = renderer.sprite.bounds.size;
