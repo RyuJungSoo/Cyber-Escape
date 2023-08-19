@@ -59,6 +59,12 @@ public class BossComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.GetComponent<MonsterComponent>().Hp <= 0)
+        {
+            GameManager.Instance.isClear = true;
+            transporters.GetComponent<Transporter>().TransporterStop();
+        }
+
         if (GameManager.Instance.isBossPuzzleUION) return;
 
         if (player.transform.position.x < 230) return;
@@ -73,6 +79,7 @@ public class BossComponent : MonoBehaviour
         if (attackTimer < 4f && changeBeltDirection)
         {
             transporters.GetComponent<Transporter>().TransporterReverse();
+            SoundManager.Instance.AudioPlay(EnumSpace.SoundType.BOSSREADY);
             changeBeltDirection = false;
         }
 

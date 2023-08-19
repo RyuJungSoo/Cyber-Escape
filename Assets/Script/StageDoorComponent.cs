@@ -14,15 +14,26 @@ public class StageDoorComponent : MonoBehaviour
     public float waitTimer = 3f;
     public bool isCheck = false;
     public bool isSoundPlay = false;
+    public bool isBoss = false;
+
+    GameObject Boss;
+
     float maxY;
     void Start()
     {
         maxY = transform.position.y + 3.6f;
+        Boss = GameObject.Find("Boss");
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (isBoss && GameManager.Instance.isClear)
+        {
+            isDoorOpen = true;
+        }
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3f);
         foreach (Collider2D hit in hits)
         {
@@ -30,15 +41,19 @@ public class StageDoorComponent : MonoBehaviour
                 isCheck = true;
         }
 
-
-        if (puzzle.isSolved)
-            isDoorOpen = true;
-
-        if (!puzzle.isSolved && puzzle.isFailed && PoolManager.Instance.currentEnemyCnt <= 0)
+        if (!isBoss)
         {
-            isDoorOpen = true;
-            PoolManager.Instance.currentEnemyCnt = -1;
+            if (puzzle.isSolved)
+                isDoorOpen = true;
+
+            if (!puzzle.isSolved && puzzle.isFailed && PoolManager.Instance.currentEnemyCnt <= 0)
+            {
+                isDoorOpen = true;
+                PoolManager.Instance.currentEnemyCnt = -1;
+            }
         }
+
+        
 
         if (isDoorOpen && !isSoundPlay && transform.position.y > maxY - 1.8f)
         {

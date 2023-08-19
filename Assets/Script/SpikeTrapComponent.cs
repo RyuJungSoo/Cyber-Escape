@@ -11,7 +11,7 @@ public class SpikeTrapComponent : MonoBehaviour
 
     public Sprite[] spikeTrapSprites;
 
-
+    GameObject Player;
     ObstacleComponent obstacleComponent;
 
 
@@ -23,6 +23,7 @@ public class SpikeTrapComponent : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
 
         obstacleComponent = GetComponent<ObstacleComponent>();
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -37,6 +38,12 @@ public class SpikeTrapComponent : MonoBehaviour
         {
             //바꾸는 줄
             renderer.sprite = spikeTrapSprites[length];
+
+            if (length == 0 && Mathf.Abs(transform.position.x - Player.transform.position.x) < 2)
+            {
+                SoundManager.Instance.AudioPlay(EnumSpace.SoundType.SPIKETRAP);
+            }
+
             //콜라이더 사이즈를 sprite 사이즈만큼 늘림
             boxCollider.size = renderer.sprite.bounds.size;
             //collider 위치를 맞추기 위해서 offset을 sprite 가운데로 맞춤

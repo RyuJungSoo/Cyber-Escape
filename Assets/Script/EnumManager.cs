@@ -40,6 +40,9 @@ namespace EnumSpace
         DOOROPEN,
         DOORCLOSE,
         STAGEDOOROPEN,
-        WIRECORRECT
+        WIRECORRECT,
+        PRESSSOUND,
+        BOSSREADY,
+        SPIKETRAP
     }
 }

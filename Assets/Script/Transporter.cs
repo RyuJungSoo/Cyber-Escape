@@ -22,6 +22,9 @@ public class Transporter : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.isClear)
+            Force = 0;
+
         if (isStop)
         {
             restartTimer += Time.deltaTime;

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private HitObject hitObject;
 
     public float Respawn_Time = 1f;
+    public bool isClear = false;
 
 
     private void Awake()
