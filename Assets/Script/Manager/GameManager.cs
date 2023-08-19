@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
         {
             if (Player.transform.position.x >= Stage_Pos[i].x)
                 GameManager.Instance.Stage = i;
+            //if (Player.transform.position.x >= Stage_Pos[3].x) //Stage3
+              //  ChangeBGM(5);
         }
     }
 
@@ -120,8 +122,8 @@ public class GameManager : MonoBehaviour
         {
             playerController.isDead = true;
             playerController.enabled = false;
-            hitObject.FadeOutStart();
-
+            playerAudioSource.PlayOneShot(bgms[4]);
+            hitObject.FadeOutStart();            
         }
     }
 
