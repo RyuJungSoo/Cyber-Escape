@@ -7,6 +7,7 @@ public class Transporter : MonoBehaviour
     public float Force = 5f;
     public bool isStop;
     public bool isReverse;
+    public bool isBossTransporter;
     private SpriteRenderer spriteRenderer;
 
     public float restartTimer = 0f;
@@ -22,6 +23,9 @@ public class Transporter : MonoBehaviour
 
     private void Update()
     {
+        if (!isBossTransporter)
+            return;
+
         if (GameManager.Instance.isClear)
             Force = 0;
 

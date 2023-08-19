@@ -12,7 +12,8 @@ public class UiManager : MonoBehaviour
     public Text HpText;
     public GameObject PauseUI;
     public GameObject TutorialUI;
-    
+    public GameObject ElevatorTutorialUI;
+
 
     private void Awake()
     {
@@ -90,6 +91,22 @@ public class UiManager : MonoBehaviour
 
         Time.timeScale = 1;
         TutorialUI.SetActive(false);
+
+    }
+
+    public void ElevatorTutorialUI_On()
+    {
+
+        Time.timeScale = 0;
+        ElevatorTutorialUI.SetActive(true);
+
+    }
+
+    public void ElevatorTutorialUI_Off()
+    {
+
+        Time.timeScale = 1;
+        ElevatorTutorialUI.SetActive(false);
 
     }
 

@@ -162,8 +162,11 @@ public class MonsterComponent : MonoBehaviour
 
         if (Hp <= 0)
         {
+            if (isBoss)
+                UiManager.Instance.BossUI_Off();
             //this.gameObject.SetActive(false);
-           gameObject.GetComponent<HitObject>().FadeOutStart();
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponent<HitObject>().FadeOutStart();
         }
     }
 
@@ -172,6 +175,7 @@ public class MonsterComponent : MonoBehaviour
         Hp = MaxHp;
         isDead = false;
         isWalk = true;
+        GetComponent<Collider2D>().enabled = true;
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         GetComponent<Animator>().SetBool("isWalk", true);
         animator.speed = 1f;

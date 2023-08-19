@@ -8439,6 +8439,7 @@ MonoBehaviour:
   Force: 5
   isStop: 0
   isReverse: 1
+  isBossTransporter: 0
   restartTimer: 0
 --- !u!61 &1757105080
 BoxCollider2D:
