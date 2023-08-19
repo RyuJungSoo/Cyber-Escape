@@ -79,7 +79,11 @@ public class MonsterComponent : MonoBehaviour
     private void Move()
     {
         animator.SetBool("isWalk", true);
-        transform.localScale=  new Vector3(direction.x, transform.localScale.y, transform.localScale.z);
+        if (type == MonsterType.ATTACKROBOT)
+            transform.localScale=  new Vector3(direction.x , transform.localScale.y, transform.localScale.z);
+        else if (type == MonsterType.ROADROBOT)
+            transform.localScale = new Vector3(direction.x * 0.75f, transform.localScale.y, transform.localScale.z);
+
         attackTimer += Time.deltaTime;
 
         if (Mathf.Abs(EnemyRigid.position.x - originPos.x) > moveRange) // moveRange 이상의 거리를 이동한 경우, 방향 바꾸기

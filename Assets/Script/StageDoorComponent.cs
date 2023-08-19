@@ -34,7 +34,7 @@ public class StageDoorComponent : MonoBehaviour
         if (puzzle.isSolved)
             isDoorOpen = true;
 
-        if (!puzzle.isSolved && puzzle.isFailed && PoolManager.Instance.currentEnemyCnt == 0)
+        if (!puzzle.isSolved && puzzle.isFailed && PoolManager.Instance.currentEnemyCnt <= 0)
         {
             isDoorOpen = true;
             PoolManager.Instance.currentEnemyCnt = -1;

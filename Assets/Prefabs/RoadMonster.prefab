@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2466163414716926352}
   - component: {fileID: 2466163414716926355}
-  - component: {fileID: 2466163414716926354}
   - component: {fileID: 2466163414716926365}
   - component: {fileID: 2466163414716926353}
   - component: {fileID: 2466163414716926364}
   - component: {fileID: 912627020675820247}
+  - component: {fileID: 5168342299263862812}
   m_Layer: 0
   m_Name: RoadMonster
   m_TagString: Monster
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2466163414716926367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 38.72, y: -0.97, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1227509333, guid: 74d2d6bab855e42408a10f5ed4d18354, type: 3}
+  m_Sprite: {fileID: -2121500305, guid: 7121f19c550a5564897773dcb4a78685, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -89,26 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2466163414716926354
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2466163414716926367}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ecd62c0b6be5db449e6b753e0b0e243, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &2466163414716926365
 Rigidbody2D:
   serializedVersion: 4
@@ -149,6 +129,7 @@ MonoBehaviour:
   speed: 2
   moveRange: 2
   isWalk: 1
+  isBoss: 0
   direction: {x: -1, y: 0}
   originPos: {x: 0, y: 0, z: 0}
   type: 0
@@ -165,18 +146,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0611763, y: 0.014364004}
+  m_Offset: {x: -0.5268092, y: 0.048779786}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2.0019534}
+    oldSize: {x: 3.2, y: 3.2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2628174, y: 2.0287275}
+  m_Size: {x: 2.1940835, y: 3.3047628}
   m_EdgeRadius: 0
 --- !u!114 &912627020675820247
 MonoBehaviour:
@@ -190,5 +171,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542a2defca37be248864dbbcf212b243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originColor: {r: 0, g: 0, b: 0, a: 0}
+  isChange: 0
   isPlayer: 0
   isFadeOut: 0
+--- !u!95 &5168342299263862812
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466163414716926367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b4b4942c6283e24692b4c46e5db73e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

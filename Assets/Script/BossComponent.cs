@@ -158,7 +158,7 @@ public class BossComponent : MonoBehaviour
                 direction = -1;
             }
 
-            if (Mathf.Abs(transform.position.x - orginPos.x) > 9)
+            if (transform.position.x > 249.3f || transform.position.x < 231.5f)
                 direction *= -1;
 
             if (rushCnt == 3)

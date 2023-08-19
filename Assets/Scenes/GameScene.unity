@@ -19504,7 +19504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 330285356265330809, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.7
+      value: -8.789
       objectReference: {fileID: 0}
     - target: {fileID: 330285356265330809, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19545,6 +19545,10 @@ PrefabInstance:
     - target: {fileID: 330285356265330810, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 330285356265330814, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
+      propertyPath: doorNum
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 330285356265330814, guid: 69561ca68f56cfb4d833a53d33b1104a, type: 3}
       propertyPath: spawnTime
@@ -92464,7 +92468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 171.25, y: -13.9, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -43,8 +43,7 @@ public class MonsterSpawnComponent : MonoBehaviour
 
         if (spawnTimer >= spawnTime)
         {
-            if (doorNum == 1)
-                Spawn(MonsterType.ATTACKROBOT);
+            Spawn((MonsterType)Random.Range(0,2));
 
             spawnCnt++;
             spawnTimer = 0;
@@ -61,6 +60,9 @@ public class MonsterSpawnComponent : MonoBehaviour
     {
         //GameObject monster = Instantiate(monsters[(int)type] , transform.position - new Vector3(0,0.15f,-2f), Quaternion.identity) as GameObject;
         GameObject monster = PoolManager.Instance.enemyGet((int)type, transform.position - new Vector3(0, 0.15f, -2f));
+        if (type == MonsterType.ROADROBOT)
+            monster.transform.position = transform.position + new Vector3(0, 0.02f, -2f);
+
         monster.GetComponent<MonsterComponent>().originPos = monster.transform.position;
         monster.GetComponent<MonsterComponent>().type = type;
     }

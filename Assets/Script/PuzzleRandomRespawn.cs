@@ -22,13 +22,13 @@ public class PuzzleRandomRespawn : MonoBehaviour
             if(!GameManager.Instance.isBossPuzzleUION && transporter.Force > 0)
                 currTime += Time.deltaTime;
 
-            if (transporterStopTimer > 5f)
+            if (transporterStopTimer > 10f)
             {
                 transporterStopTimer = 0;
                 transporter.TransporterStart();
             }
 
-            if (currTime > 5)                      //
+            if (currTime > 10)                      //
             {
                 float newX = Random.Range(232f, 248f);
                 float newY = -5.8f;
