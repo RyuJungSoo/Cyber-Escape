@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private float TargetZoomSize = 5f;
     private const float BossZoomSize = 6f;
     private const float ElevatorZoomSize = 3f;
-    private const float SpecialZoomSize = 3.5f;
+    private const float SpecialZoomSize = 4f;
 
     private float lastZoomSpeed;
 
@@ -121,7 +121,7 @@ public class CameraController : MonoBehaviour
         {
             state = Stage.Stage2Puzzle2;
             xPos = Mathf.Clamp(xPos, 0.43f, 147.5f);
-            yPos = Mathf.Clamp(yPos, -13.9f, -1.3f); //(value, min, max)
+            yPos = Mathf.Clamp(yPos+1, -13.9f, -1.3f); //(value, min, max)
             Debug.Log("stage2 ∆€¡Ò1");
         }
 
@@ -135,7 +135,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Stage2
-        else if (Target.transform.position.x <= 165f)
+        else if (Target.transform.position.x <= 173f)
         {
             state = Stage.Base;
             yPos = Mathf.Clamp(yPos, -21f, 1f);
