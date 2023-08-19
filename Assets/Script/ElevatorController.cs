@@ -44,7 +44,7 @@ public class ElevatorController : MonoBehaviour
             }
             
         }
-        else if (Vector2.Distance(player.position, elevatorswitch.position) > 5.0f)
+        else if (Vector2.Distance(player.position, elevatorswitch.position) > 10.0f)
         {
             iselevatordown = false;
         }
