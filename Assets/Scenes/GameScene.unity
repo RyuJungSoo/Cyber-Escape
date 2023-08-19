@@ -6609,7 +6609,7 @@ GameObject:
   - component: {fileID: 240863991}
   - component: {fileID: 240863990}
   m_Layer: 0
-  m_Name: PressBody
+  m_Name: PressBody2_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13158,6 +13158,10 @@ PrefabInstance:
       propertyPath: PuzzleUI
       value: 
       objectReference: {fileID: 2013048659}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7908918299245459800, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
       propertyPath: m_Offset.x
       value: 0
@@ -13210,8 +13214,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorButton_Laser
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+--- !u!1 &524327226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7908918299245459804, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+  m_PrefabInstance: {fileID: 524327225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524327227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524327226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ffb0712423bd2d4f9b63268ee5fc817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuzzleUI: {fileID: 2013048659}
+--- !u!114 &524327232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524327226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9388b350ad5e24b4b83c3d235ce92c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuzzleUI: {fileID: 2013048659}
+  Timer: {fileID: 841573193}
+  Door: {fileID: 0}
+  limitTime: 10
+  isBossDoorButton: 0
+  BossPuzzles: []
+  boss: {fileID: 0}
 --- !u!1001 &525530153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33250,7 +33292,7 @@ GameObject:
   - component: {fileID: 1473266143}
   - component: {fileID: 1473266142}
   m_Layer: 0
-  m_Name: PressBody (2)
+  m_Name: PressBody2_2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35167,7 +35209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7783314305110812596, guid: 29a8d1b0576fe6e4ea3cca94c2f86e69, type: 3}
       propertyPath: m_Name
-      value: RotateLaser 2_2
+      value: RotateLaser2_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29a8d1b0576fe6e4ea3cca94c2f86e69, type: 3}
@@ -92407,7 +92449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 139, y: -14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
