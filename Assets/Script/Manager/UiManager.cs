@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject TutorialUI;
     public GameObject ElevatorTutorialUI;
+    public Image DashUI;
 
 
     private void Awake()
@@ -32,6 +33,11 @@ public class UiManager : MonoBehaviour
         
     }
 
+    public void DashUI_reset()
+    {
+        if(DashUI.fillAmount >= 0)
+            DashUI.fillAmount = 0;
+    }
 
     public void HpUI_Update()
     {

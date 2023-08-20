@@ -31,12 +31,12 @@ public class DoorButtonController : MonoBehaviour
     {
 
         //ESC ¥≠∑∂¿ª∂ß ∆€¡Ò UI≈∞±‚
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             PuzzleUI.SetActive(false);
             GameManager.Instance.isBossPuzzleUION = false;
             GameObject.Find("Player").GetComponent<PlayerController>().isPuzzleSolving = false;
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

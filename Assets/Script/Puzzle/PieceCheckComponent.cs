@@ -32,6 +32,7 @@ public class PieceCheckComponent : MonoBehaviour
         if (cnt == pieces.Length)
         {
             GetComponent<PuzzleCompononent>().isSolved = true;
+            PuzzleType[index].SetActive(false);
             transform.parent.gameObject.SetActive(false);
         }
         else
@@ -42,7 +43,7 @@ public class PieceCheckComponent : MonoBehaviour
     {
         //  이전 퍼즐이 안 꺼진 경우 초기화
         //if (is3x3)
-        if (PuzzleType[index].activeSelf == true)
+        /*if (PuzzleType[index].activeSelf == true)
         {
             foreach (PuzzlePiece piece in pieces)
             {
@@ -68,7 +69,7 @@ public class PieceCheckComponent : MonoBehaviour
             PuzzleType[index].SetActive(false);
             GetComponent<PuzzleCompononent>().isSolved = false;
             GetComponent<PuzzleCompononent>().isFailed = false;
-        }
+        }*/
 
         // 문제를 푼 이력이 없는 경우 return
         if (GetComponent<PuzzleCompononent>().isSolved != true && GetComponent<PuzzleCompononent>().isFailed != true)
@@ -106,9 +107,12 @@ public class PieceCheckComponent : MonoBehaviour
 
     public void PuzzleSetting()
     {
-        
-           
-
+        if (PuzzleType[index].activeSelf == true)
+        {
+            PuzzleType[index].SetActive(false);
+            GetComponent<PuzzleCompononent>().isSolved = false;
+            GetComponent<PuzzleCompononent>().isFailed = false;
+        }
         // 퍼즐 유형 중 하나 가져오기
         index = Random.Range(0, PuzzleType.Length);
         Debug.Log(index);

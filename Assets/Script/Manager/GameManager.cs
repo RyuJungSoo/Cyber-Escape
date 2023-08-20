@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 
         if (playerController.Hp <= 0)
         {
-
+            UiManager.Instance.DashUI_reset();
             playerController.isDead = true;
             playerController.enabled = false;
             playerAudioSource.PlayOneShot(bgms[4]);
