@@ -1,22 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class BlinkLaserController : MonoBehaviour
+public class Stage2BlinkLaserController : MonoBehaviour
 {
-    public float interval_A = 2.0f; 
-    public GameObject[] BlinkLaser_A = new GameObject[2];
-
+    public float interval_A = 2.0f;
     private float timer_A = 0.0f;
     private bool isLaserActive_A = true;
 
-
     public float interval_B = 1.5f;
-    public GameObject[] BlinkLaser_B = new GameObject[2];
-
     private float timer_B = 0.0f;
     private bool isLaserActive_B = true;
+
+    public GameObject BlinkLaser2_1;
+    public GameObject BlinkLaser2_2;
+    public GameObject BlinkLaser2_3;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +27,8 @@ public class BlinkLaserController : MonoBehaviour
     void Update()
     {
         timer_A -= Time.deltaTime;
-        timer_B -= Time.deltaTime;        
-       
+        timer_B -= Time.deltaTime;
+
         if (timer_A <= 0.0f)
         {
             // Debug.Log("활성화or비활성화!");
@@ -44,18 +42,18 @@ public class BlinkLaserController : MonoBehaviour
             timer_B = interval_B;
         }
     }
-
     private void ToggleLaser_A()
     {
         isLaserActive_A = !isLaserActive_A;
-        for (int i = 0; i < 2; i++)
-            BlinkLaser_A[i].SetActive(isLaserActive_A);
+
+        BlinkLaser2_1.SetActive(isLaserActive_A);
+        BlinkLaser2_3.SetActive(isLaserActive_A);
     }
 
     private void ToggleLaser_B()
     {
         isLaserActive_B = !isLaserActive_B;
-        for (int i = 0; i < 2; i++)
-            BlinkLaser_B[i].SetActive(isLaserActive_B);
+
+        BlinkLaser2_2.SetActive(isLaserActive_B);
     }
 }
