@@ -105,7 +105,7 @@ public class CameraController : MonoBehaviour
             state = Stage.ElevatorSection;
             xPos = Mathf.Clamp(xPos, 0.43f, 158.5f);
             yPos = Mathf.Clamp(yPos, -16f, -1f); //(value, min, max)
-            Debug.Log("엘리베이터 방");
+            //Debug.Log("엘리베이터 방");
         }
 
         //Stage2 아래 장애물 구간: 확대
@@ -113,7 +113,7 @@ public class CameraController : MonoBehaviour
         {
             state = Stage.Stage2Puzzle2;
             yPos = Mathf.Clamp(yPos, -16f, -14f); //(value, min, max) //-15? ,-12.47
-            Debug.Log("장애물 구간");
+            //Debug.Log("장애물 구간");
         }
 
         // Stage2 위층 퍼즐구간: 화면 확대 및 엘리베이터 방 보이면 안 됨
@@ -122,7 +122,7 @@ public class CameraController : MonoBehaviour
             state = Stage.Stage2Puzzle1;
             xPos = Mathf.Clamp(xPos, 0.43f, 146.8f);
             yPos = Mathf.Clamp(yPos + 1, -13.9f, -1.3f); //(value, min, max)
-            Debug.Log("stage2 퍼즐1");
+            //Debug.Log("stage2 퍼즐1");
         }
 
         // tutorial~Stage1
@@ -131,7 +131,7 @@ public class CameraController : MonoBehaviour
             state = Stage.TutorialStage1;
             xPos = Mathf.Clamp(xPos, 0.43f, 264.1f);
             yPos = Mathf.Clamp(yPos, 0.02f, 1f); //(value, min, max)
-            Debug.Log("stage1 이내");
+            //Debug.Log("stage1 이내");
         }
 
         // Stage2
@@ -139,7 +139,7 @@ public class CameraController : MonoBehaviour
         {
             state = Stage.Base;
             yPos = Mathf.Clamp(yPos+1, -21f, 1f);
-            Debug.Log("stage2");
+            //Debug.Log("stage2");
         }
 
         //Stage3 엘리베이터 구간
@@ -149,7 +149,7 @@ public class CameraController : MonoBehaviour
             state = Stage.ElevatorSection;
             xPos = 176.5f;
             yPos = Mathf.Clamp(yPos, -16f, 2f); //(value, min, max)
-            Debug.Log("엘리베이터 방");
+            //Debug.Log("엘리베이터 방");
         }
 
         //Stage3 장애물 구간
@@ -157,7 +157,7 @@ public class CameraController : MonoBehaviour
         {
             state = Stage.Stage2Puzzle1;
             yPos = yPos + 1;
-            Debug.Log("stage3 장애물구간");
+            //Debug.Log("stage3 장애물구간");
         }
 
         //Stage3
@@ -165,21 +165,21 @@ public class CameraController : MonoBehaviour
         {
             state = Stage.Base;
             yPos = yPos + 2;
-            Debug.Log("stage3");
+            //Debug.Log("stage3");
         }
 
         else if (Target.transform.position.x >= 213f && Target.transform.position.x < 230.5f)
         {
             state = Stage.Base;
             yPos = Mathf.Clamp(yPos, -5f, 1f);
-            Debug.Log("stage3");
+            //Debug.Log("stage3");
         }
 
         else
         {
             state = Stage.Base;
             xPos = Mathf.Clamp(xPos, 0.43f, 264.1f);
-            Debug.Log("그 밖");
+            //Debug.Log("그 밖");
             //yPos = Mathf.Clamp(yPos, -5f, 1f);
         }
         transform.position = new Vector3(xPos, yPos, -12f);
@@ -189,17 +189,17 @@ public class CameraController : MonoBehaviour
         {
             state = Stage.Boss;
             transform.position = new Vector3(240.5f, -3.7f, -12f);
-            Debug.Log("보스 스테이지 들어옴");
+            //Debug.Log("보스 스테이지 들어옴");
         }
 
-        Debug.Log("카메라 추적, 제한 끝");
+        //Debug.Log("카메라 추적, 제한 끝");
     }
 
     void Zoom()
     {
         float smoothZoomSize = Mathf.SmoothDamp(cam.orthographicSize, TargetZoomSize, ref lastZoomSpeed, smoothTime);
         cam.orthographicSize = smoothZoomSize;
-        Debug.Log("줌");
+        //Debug.Log("줌");
     }
 
 }

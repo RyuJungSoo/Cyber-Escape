@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
     public void Respawn()
     {
         Player.SetActive(true);
+        hitObject.isFadeOut = false;
         Player.transform.position = Stage_Pos[Stage];
         renderer.color = new Color(1,1,1);
         playerController.enabled = true;
@@ -104,6 +105,9 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDamage(float Damage,bool isRed) 
     {
+        if (Player.GetComponent<PlayerController>().isDead == true || hitObject.isFadeOut == true)
+            return;
+
         //피격시 0.5초 무적
         if (Player.GetComponent<HitObject>().isChange) return;
         Player.GetComponent<PlayerController>().HitSoundPlay();
@@ -115,11 +119,12 @@ public class GameManager : MonoBehaviour
         {
             playerController.Hp = 0;
         }
-
+        //Debug.Log(playerController.Hp);
         UiManager.Instance.HpUI_Update();
 
         if (playerController.Hp <= 0)
         {
+
             playerController.isDead = true;
             playerController.enabled = false;
             playerAudioSource.PlayOneShot(bgms[4]);

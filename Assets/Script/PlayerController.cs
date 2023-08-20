@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (isPuzzleSolving || Time.timeScale == 0)
         {
             if (audioSource.isPlaying == true)
@@ -266,7 +268,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CoolTime()
     {
-        print("쿨타임 코루틴 실행");
+        //print("쿨타임 코루틴 실행");
 
         while (dashTimer >= 0)
         {
@@ -274,7 +276,7 @@ public class PlayerController : MonoBehaviour
             skill_UI.fillAmount = (1.0f * (dashCooldown - dashTimer) / dashCooldown);
             yield return new WaitForFixedUpdate();
         }
-        print("쿨타임 코루틴 완료");
+        //print("쿨타임 코루틴 완료");
         skill_UI.fillAmount = 0;
     }
 
