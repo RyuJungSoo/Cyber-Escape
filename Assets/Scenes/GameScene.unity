@@ -12642,6 +12642,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519933163}
   m_CullTransparentMesh: 0
+--- !u!1 &520434534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520434536}
+  - component: {fileID: 520434535}
+  m_Layer: 0
+  m_Name: BlinkLasersController(stage2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &520434535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520434534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8365719b559f26e45b77c6e9a95ec948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval_A: 2
+  interval_B: 1.5
+  BlinkLaser2_1: {fileID: 606621733}
+  BlinkLaser2_2: {fileID: 1498271879}
+  BlinkLaser2_3: {fileID: 1106923598}
+--- !u!4 &520434536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520434534}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.4937744, y: 3.6146889, z: -0.23269701}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1588671213}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &524161466
 GameObject:
   m_ObjectHideFlags: 0
@@ -20820,6 +20869,7 @@ Transform:
   - {fileID: 597992055}
   - {fileID: 1117877293}
   - {fileID: 1898323803}
+  - {fileID: 936865542}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22537,6 +22587,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934915235}
   m_CullTransparentMesh: 0
+--- !u!1 &936865540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936865542}
+  - component: {fileID: 936865541}
+  m_Layer: 0
+  m_Name: StopStage2Lasers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &936865541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936865540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710a901752fae3244af39b3178a1858e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuzzleUI: {fileID: 0}
+  BlinkLaser:
+  - {fileID: 606621733}
+  - {fileID: 1498271879}
+  - {fileID: 1106923598}
+  Stage2BlinkLaserController: {fileID: 520434534}
+--- !u!4 &936865542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936865540}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.691299, y: -14.707486, z: 1.2426459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 814541773}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940638607
 GameObject:
   m_ObjectHideFlags: 0
@@ -23445,7 +23545,7 @@ GameObject:
   - component: {fileID: 995256608}
   - component: {fileID: 995256610}
   - component: {fileID: 995256609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boss
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -58327,6 +58427,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0391be0a01c444691ab52cff30d475ca, type: 3}
+--- !u!1 &1588671212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588671213}
+  m_Layer: 0
+  m_Name: BlinkLasersController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1588671213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588671212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 127.9862, y: -22.529692, z: -0.05260176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1702037029}
+  - {fileID: 520434536}
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598791958
 GameObject:
   m_ObjectHideFlags: 0
@@ -60555,7 +60688,7 @@ GameObject:
   - component: {fileID: 1702037029}
   - component: {fileID: 1702037028}
   m_Layer: 0
-  m_Name: BlinkLasersController
+  m_Name: BlinkLasersController(stage1, 3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60576,13 +60709,10 @@ MonoBehaviour:
   interval_A: 2
   BlinkLaser_A:
   - {fileID: 1117043694}
-  - {fileID: 606621733}
-  - {fileID: 1106923598}
   - {fileID: 378066169}
   interval_B: 1.5
   BlinkLaser_B:
   - {fileID: 1982247357}
-  - {fileID: 1498271879}
   - {fileID: 731388568}
 --- !u!4 &1702037029
 Transform:
@@ -60591,13 +60721,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702037027}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 177.92279, y: 2.1261878, z: 0.574112}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 49.936592, y: 24.65588, z: 0.62671375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_Father: {fileID: 1588671213}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706693002
 GameObject:
@@ -94200,7 +94330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103045969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70, y: -1, z: 0}
+  m_LocalPosition: {x: 127.9, y: -13.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
