@@ -21,6 +21,7 @@ public class SpikeTrapComponent : MonoBehaviour
     {
         renderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        //var boxCollider = GetComponent<BoxCollider2D>() as BoxCollider2D;
 
         obstacleComponent = GetComponent<ObstacleComponent>();
         Player = GameObject.Find("Player");
@@ -45,7 +46,8 @@ public class SpikeTrapComponent : MonoBehaviour
             }*/
 
             //콜라이더 사이즈를 sprite 사이즈만큼 늘림
-            boxCollider.size = renderer.sprite.bounds.size;
+            boxCollider.size = new Vector2(0.15f, renderer.sprite.bounds.size.y);
+            
             //collider 위치를 맞추기 위해서 offset을 sprite 가운데로 맞춤
             boxCollider.offset = new Vector2(0, spikeTrapSprites[length].bounds.center.y);
             //다음 이미지로 넘어가기 위해서 length를 증가
