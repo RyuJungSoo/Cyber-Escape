@@ -69,18 +69,14 @@ public class Transporter : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Obstacle"))
         {
-            
             if (isReverse == true)
             {
-                
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-Force, 0), ForceMode2D.Force);
             }
             else
             {
-                
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Force, 0), ForceMode2D.Force);
             }
-
         }
     }
 

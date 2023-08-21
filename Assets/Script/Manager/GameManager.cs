@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
         playerController.isDead = false;
         playerController.Hp = playerController.MaxHp;
         UiManager.Instance.HpUI_Update();
+
     }
 
 

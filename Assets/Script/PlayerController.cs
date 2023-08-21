@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public bool isPuzzleSolving = false;
     public bool isDead = false;
 
+
     private void Awake()
     {
         GameManager.Instance.ChangeBGM(0);
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+ 
 
         if (isPuzzleSolving || Time.timeScale == 0)
         {
@@ -75,7 +76,8 @@ public class PlayerController : MonoBehaviour
             PlayEffect(3);
         }
 
-
+        
+        
         float key = 0.0f; // 좌우 이동 방향
         if (Input.GetKey(KeyCode.RightArrow))
         {
