@@ -37,7 +37,6 @@ public class PuzzleRandomRespawn : MonoBehaviour
                 Puzzle.GetComponent<DoorButtonController>().Reset();
                 Puzzle.SetActive(true);
                 currTime = 0;
-                transporter.TransporterStop();
             }
         }
 

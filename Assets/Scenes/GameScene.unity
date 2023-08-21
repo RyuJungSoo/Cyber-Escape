@@ -10300,8 +10300,10 @@ MonoBehaviour:
   Door: {fileID: 656994470}
   limitTime: 8
   isBossDoorButton: 0
+  isNoDoorButton: 0
   BossPuzzles: []
   boss: {fileID: 0}
+  transporter: {fileID: 0}
 --- !u!58 &423219930
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12898,8 +12900,10 @@ MonoBehaviour:
   Door: {fileID: 0}
   limitTime: 10
   isBossDoorButton: 0
+  isNoDoorButton: 1
   BossPuzzles: []
   boss: {fileID: 0}
+  transporter: {fileID: 0}
 --- !u!1001 &525530153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13781,8 +13785,10 @@ MonoBehaviour:
   Door: {fileID: 1186862361}
   limitTime: 15
   isBossDoorButton: 0
+  isNoDoorButton: 0
   BossPuzzles: []
   boss: {fileID: 0}
+  transporter: {fileID: 0}
 --- !u!58 &590259238
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20074,8 +20080,10 @@ MonoBehaviour:
   Door: {fileID: 212248582}
   limitTime: 15
   isBossDoorButton: 0
+  isNoDoorButton: 0
   BossPuzzles: []
   boss: {fileID: 0}
+  transporter: {fileID: 0}
 --- !u!58 &787659019
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -28054,6 +28062,10 @@ PrefabInstance:
       propertyPath: PuzzleUI
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
+      propertyPath: transporter
+      value: 
+      objectReference: {fileID: 499445684}
     - target: {fileID: 7908918299245459623, guid: c33939f39ccedd44e82d58145f193db6, type: 3}
       propertyPath: isBossDoorButton
       value: 1
@@ -95598,7 +95610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8445494296570332708, guid: f3e93f5a94faab14c887d740da6d386c, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8445494296570332708, guid: f3e93f5a94faab14c887d740da6d386c, type: 3}
       propertyPath: m_LocalScale.x

@@ -91,19 +91,22 @@ public class TimerController : MonoBehaviour
             overSoundTimer += Time.deltaTime;
 
             //문 열리는 애니메이션 재생
-                SoundManager.Instance.AudioPlay(SoundType.DOOROPEN);
+                
 
-            if (!isBossStage)
+            if (!isBossStage && !doorButton.GetComponent<DoorButtonController>().isNoDoorButton)
             {
+                SoundManager.Instance.AudioPlay(SoundType.DOOROPEN);
                 doorButton.GetComponent<DoorButtonController>().Door.GetComponent<Animator>().SetBool("isDoorOpen", true);
                 doorButton.GetComponent<DoorButtonController>().Door.GetComponent<MonsterSpawnComponent>().isStartSpawn = true;
             }
-            else
+            else if (isBossStage)
             {
                 transporter.TransporterStart();
                 GameManager.Instance.isBossPuzzleUION = false;
                 doorButton.SetActive(false);
             }
+
+        
            
             doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isSolved = false;
             doorButton.GetComponent<DoorButtonController>().PuzzleUI.transform.GetChild(0).GetComponent<PuzzleCompononent>().isFailed = true;

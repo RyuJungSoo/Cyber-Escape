@@ -65,6 +65,8 @@ public class BossComponent : MonoBehaviour
             transporters.GetComponent<Transporter>().TransporterStop();
         }
 
+        if (gameObject.GetComponent<MonsterComponent>().Hp <= 0) return;
+
         if (GameManager.Instance.isBossPuzzleUION) return;
 
         if (player.transform.position.x < 230) return;

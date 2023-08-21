@@ -21,10 +21,13 @@ public class RushObstacleFadeOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.isClear)
+            fadeOut = true;
+
         if (fadeOut)
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, renderer.color.a - Time.deltaTime / 2);
 
-        if (renderer.color.a < 0)
+        if (renderer.color.a < 0 && !GameManager.Instance.isClear)
         {
             renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 1);
             fadeOut = false;

@@ -14,9 +14,12 @@ public class DoorButtonController : MonoBehaviour
     bool isAlreadyTimerSetting = false;
 
     public bool isBossDoorButton = false;
+    public bool isNoDoorButton = false;
+
 
     public GameObject[] BossPuzzles;
     public BossComponent boss;
+    public GameObject transporter;
 
     void Start()
     {
@@ -69,6 +72,7 @@ public class DoorButtonController : MonoBehaviour
             PuzzleUI.SetActive(true);
 
             GameManager.Instance.isBossPuzzleUION = true;
+            transporter.GetComponent<Transporter>().TransporterStop();
 
 
             // 이미 타이머 세팅했는지 중복 세팅 방지
