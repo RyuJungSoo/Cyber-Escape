@@ -96,6 +96,7 @@ public class LogComponent : MonoBehaviour
     IEnumerator TextFadeOut()
     {
         ClickLog.SetActive(false);
+        SkipButton.SetActive(false);
         while (Logs[Logs.Length - 1].GetComponent<TMP_Text>().color.a > 0)
         {
             //Debug.Log("Start");
