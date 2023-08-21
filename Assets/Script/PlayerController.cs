@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour
             
         if (!isdash)
         {
+            speed = 5.0f;
             this.gameObject.layer = 0;
             animator.SetBool("isDash", false);
         }
@@ -177,7 +178,8 @@ public class PlayerController : MonoBehaviour
             dashTime -= Time.deltaTime;
             this.gameObject.layer = 8;
             animator.SetBool("isDash", true);
-            transform.Translate(key * 0.1f, 0, 0);
+            // transform.Translate(key * 0.1f, 0, 0);
+            speed = 20.0f;
         }
     }
 
