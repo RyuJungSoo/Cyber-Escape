@@ -120,6 +120,12 @@ public class BossComponent : MonoBehaviour
 
                 direction = transform.position.x > player.transform.position.x ? -1 : 1;
                 targetPos = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+
+                if (targetPos.x > 249.3f)
+                    targetPos.x = 249.3f;
+                if (targetPos.x < 231.5f)
+                    targetPos.x = 231.5f;
+
                 jumpAngle = Mathf.Rad2Deg * Mathf.Acos(targetPos.x);
                 jumpStartPos = transform.position;
                 float distance = Mathf.Abs(targetPos.x - jumpStartPos.x);
