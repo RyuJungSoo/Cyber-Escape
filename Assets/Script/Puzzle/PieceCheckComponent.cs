@@ -109,9 +109,7 @@ public class PieceCheckComponent : MonoBehaviour
     {
         if (PuzzleType[index].activeSelf == true)
         {
-            PuzzleType[index].SetActive(false);
-            GetComponent<PuzzleCompononent>().isSolved = false;
-            GetComponent<PuzzleCompononent>().isFailed = false;
+            Reset();
         }
         // 퍼즐 유형 중 하나 가져오기
         index = Random.Range(0, PuzzleType.Length);

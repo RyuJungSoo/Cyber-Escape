@@ -55,12 +55,12 @@ public class PlayerController : MonoBehaviour
         this.audioSource = GetComponent<AudioSource>();
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         direction = Vector2.zero;
-    }    
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (isPuzzleSolving || Time.timeScale == 0)
         {
@@ -73,19 +73,19 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("atk");
             PlayEffect(3);
-        }                                                                         
+        }
 
 
         float key = 0.0f; // 좌우 이동 방향
         if (Input.GetKey(KeyCode.RightArrow))
         {
             key = 1.0f;
-            
+
         }
         if (Input.GetKey(KeyCode.LeftArrow))
-        { 
+        {
             key = -1.0f;
-            
+
         }
 
         direction.x = Input.GetAxisRaw("Horizontal"); // 왼쪽부터 -1 0 1
@@ -97,12 +97,12 @@ public class PlayerController : MonoBehaviour
         }
         else
             audioSource.loop = false;
-            
+
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(col2D.bounds.center, col2D.bounds.size, 0f, Vector2.down, 0.02f, LayerMask.GetMask("Ground"));
         if (raycastHit.collider != null)
             isGround = true;
-        else 
+        else
             isGround = false;
 
         if (Input.GetKeyDown(KeyCode.Space) && isGround) // 점프
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
             PlayEffect(2);
         }
 
-        
+
         if (isGround)
         {
             transform.position += direction * speed * Time.deltaTime; // 이동
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             direction.x = temp;
             transform.position += direction * speed * Time.deltaTime;
         }
-        
+
 
         if ((key != 0.0f) && isGround) // 움직이는 방향에 맞춰 반전
         {
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
         if (key != 0.0f) // 걷기 애니메이션 설정
         {
-            if(dashTime != defaultTime)
+            if (dashTime != defaultTime)
                 animator.SetBool("isWalk", true);
         }
         else
@@ -157,9 +157,10 @@ public class PlayerController : MonoBehaviour
         {
             dashTimer -= Time.deltaTime;
         }
-            
+
         if (!isdash)
         {
+            speed = 5.0f;
             this.gameObject.layer = 0;
             animator.SetBool("isDash", false);
         }
@@ -177,7 +178,8 @@ public class PlayerController : MonoBehaviour
             dashTime -= Time.deltaTime;
             this.gameObject.layer = 8;
             animator.SetBool("isDash", true);
-            transform.Translate(key * 0.1f, 0, 0);
+            // transform.Translate(key * 0.1f, 0, 0);
+            speed = 20.0f;
         }
     }
 
@@ -186,7 +188,7 @@ public class PlayerController : MonoBehaviour
         Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
         foreach (Collider2D collider in collider2Ds)
         {
-            if (collider.CompareTag("Monster")  || collider.CompareTag("Dummy"))
+            if (collider.CompareTag("Monster") || collider.CompareTag("Dummy"))
             {
                 if (collider.gameObject.GetComponent<HitObject>().isFadeOut) return;
 
@@ -218,16 +220,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D (Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Laser")
         {
             if (Hp > 0)
-                OnDamaged(collision.transform.position, true,3);
+                OnDamaged(collision.transform.position, true, 3);
         }
     }
 
-    
+
 
     public void OnDamaged(Vector2 targetPos, bool isPushed, float power)
     {
