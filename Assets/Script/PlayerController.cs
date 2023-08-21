@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public bool isPuzzleSolving = false;
     public bool isDead = false;
 
+
     private void Awake()
     {
         GameManager.Instance.ChangeBGM(0);
