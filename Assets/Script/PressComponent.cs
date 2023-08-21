@@ -13,7 +13,7 @@ public class PressComponent : MonoBehaviour
     public float downSpeed = 3.0f;
     public float upSpeed = 2.0f;
     public bool isDown = true;
-
+    public bool is2Stage = false;
 
 
     void Start()
@@ -25,13 +25,14 @@ public class PressComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        obstacleComponent.isNotAttacking = !isDown;
+        if (!is2Stage)
+            obstacleComponent.isNotAttacking = !isDown;
+        else
+            obstacleComponent.isNotAttacking = false;
 
         if (isDown)
         {
             transform.position += new Vector3(0, -1) * downSpeed * Time.deltaTime;
-           
-
         }
         else
         {
