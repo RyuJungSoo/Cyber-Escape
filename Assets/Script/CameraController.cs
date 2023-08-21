@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     public enum Stage
     {
         //  스테이지 구간 유형 나누기
-        TutorialStage1, Base, Stage2Puzzle1, Stage2Puzzle2, ElevatorSection, Boss
+        TutorialStage1, Base, Stage2Puzzle, hallway, ElevatorSection, Boss
     }
     private Stage state
     {
@@ -35,11 +35,11 @@ public class CameraController : MonoBehaviour
                 case Stage.Base:
                     TargetZoomSize = 5f;
                     break;
-                case Stage.Stage2Puzzle1:
+                case Stage.Stage2Puzzle:
                     TargetZoomSize = SpecialZoomSize; //추가
                     break;
-                case Stage.Stage2Puzzle2:
-                    TargetZoomSize = SpecialZoomSize;
+                case Stage.hallway:
+                    TargetZoomSize = SpecialZoomSize-0.5f;
                     break;//추가
                 case Stage.ElevatorSection:
                     TargetZoomSize = ElevatorZoomSize;
@@ -111,15 +111,24 @@ public class CameraController : MonoBehaviour
         //Stage2 아래 장애물 구간: 확대
         else if (Target.transform.position.x > 122f && Target.transform.position.x <= 160f && Target.transform.position.y <= -13f)
         {
-            state = Stage.Stage2Puzzle2;
+            state = Stage.Stage2Puzzle;
             yPos = Mathf.Clamp(yPos, -16f, -14f); //(value, min, max) //-15? ,-12.47
             //Debug.Log("장애물 구간");
         }
 
-        // Stage2 위층 퍼즐구간: 화면 확대 및 엘리베이터 방 보이면 안 됨
-        else if (Target.transform.position.x > 135f && Target.transform.position.x <= 152.8f && Target.transform.position.y >= -4f)
+        // Stage2 위층 퍼즐구간~장애물 구간 통로: 확대 및 엘리베이터 방 보이면 안 됨
+        else if (Target.transform.position.x > 127.4f && Target.transform.position.x <= 145.5f && Target.transform.position.y <= -5f)
         {
-            state = Stage.Stage2Puzzle1;
+            state = Stage.hallway;
+            xPos = Mathf.Clamp(xPos, 0.43f, 146f);
+            yPos = Mathf.Clamp(yPos, -8f, -6f); //(value, min, max)
+            //Debug.Log("stage2 퍼즐1");
+        }
+
+        // Stage2 위층 퍼즐구간: 화면 확대 및 엘리베이터 방 보이면 안 됨
+        else if (Target.transform.position.x > 135f && Target.transform.position.x <= 153f)
+        {
+            state = Stage.Stage2Puzzle;
             xPos = Mathf.Clamp(xPos, 0.43f, 146.8f);
             yPos = Mathf.Clamp(yPos + 1, -13.9f, -1.3f); //(value, min, max)
             //Debug.Log("stage2 퍼즐1");
@@ -144,10 +153,10 @@ public class CameraController : MonoBehaviour
 
         //Stage3 엘리베이터 구간
         else if (Target.transform.position.x > 173f && Target.transform.position.x <= 179.13f
-            && Target.transform.position.y < 2f)
+            && Target.transform.position.y < 0f)
         {
             state = Stage.ElevatorSection;
-            xPos = 176.5f;
+            xPos = Mathf.Clamp(xPos, 177.3f, 177.38f); 
             yPos = Mathf.Clamp(yPos, -16f, 2f); //(value, min, max)
             //Debug.Log("엘리베이터 방");
         }
@@ -155,7 +164,7 @@ public class CameraController : MonoBehaviour
         //Stage3 장애물 구간
         else if (Target.transform.position.x >= 201f && Target.transform.position.x < 213f)
         {
-            state = Stage.Stage2Puzzle1;
+            state = Stage.Stage2Puzzle;
             yPos = yPos + 1;
             //Debug.Log("stage3 장애물구간");
         }
@@ -164,6 +173,7 @@ public class CameraController : MonoBehaviour
         else if (Target.transform.position.x < 201f)
         {
             state = Stage.Base;
+            xPos = Mathf.Clamp(xPos, 181f, 264.1f);
             yPos = yPos + 2;
             //Debug.Log("stage3");
         }
