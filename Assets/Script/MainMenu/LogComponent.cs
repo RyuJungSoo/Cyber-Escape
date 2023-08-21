@@ -5,15 +5,19 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class LogComponent : MonoBehaviour
 {
     private bool isFadeEnd;
     private int index = 0;
     public GameObject[] Logs;
     public GameObject ClickLog;
+    public GameObject SkipButton;
     public string[] Texts;
     private bool isTyping;
+    public bool isSkip;
     private AudioSource audioSource;
+
 
     private void Awake()
     {
@@ -34,6 +38,8 @@ public class LogComponent : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (isSkip == true)
+                    return;
                 if (index < Logs.Length)
                 {
                     Logs[index].SetActive(true);
@@ -49,7 +55,11 @@ public class LogComponent : MonoBehaviour
         }
     }
 
-
+    public void SoundStop()
+    {
+        audioSource.Stop();
+    }
+        
 
     IEnumerator FadeIn()
     {
@@ -63,6 +73,7 @@ public class LogComponent : MonoBehaviour
             yield return null;
         }
         ClickLog.SetActive(true);
+        SkipButton.SetActive(true);
         isFadeEnd = true;
     }
 
