@@ -11,7 +11,9 @@
 **최우혁** - 스테이지, 몹, 보스 프로그래밍
 
 # 게임설명
-
+![CyberEscape](https://github.com/RyuJungSoo/Cyber-Escape/assets/81175672/9f369b87-6f9d-4d6f-bb9b-50811d946152)                                  
+이름 : Cyber Escape                       
+                      
 장르 : 플랫포머 횡스크롤 액션/퍼즐 게임
 
 시점 : 사이드뷰
@@ -35,6 +37,7 @@
 퇴로는 없다. 공장에 가득 차 있는 문 속의 적들을 물리치고, 다양한 퍼즐을 헤쳐나가며 공장을 탈출하라!
 
 # 조작 방법
+![Cyber-Escape 2023-08-24 오후 6_24_35](https://github.com/RyuJungSoo/Cyber-Escape/assets/81175672/6e58357b-a0bc-4890-abb1-fca1daf34746)                         
 
 ## 게임 진행 방식
 
